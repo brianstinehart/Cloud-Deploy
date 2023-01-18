@@ -17,7 +17,7 @@
     
     - name: Install specified python requirements for Azure Collection
       ansible.builtin.pip:
-        requirements: ~/ansible/collections/ansible_collections/azure/azcollection/requirements-azure.txt
+        requirements: /usr/share/ansible/collections/ansible_collections/azure/azcollection/requirements-azure.txt
 
     # Create a resource group
     - name: Azure | Create a resource group
