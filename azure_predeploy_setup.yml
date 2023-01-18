@@ -19,10 +19,6 @@
     # Create a resource group
     - name: Azure | Create a resource group
       azure.azcollection.azure_rm_resourcegroup:
-        client_id: "{{ azure_client_id }}"
-        secret: "{{ azure_secret }}"
-        subscription_id: "{{ azure_subscription_id }}"
-        tenant: "{{ azure_tenant }}"
         name: "{{ azure_resource_group }}"
         location: "{{ azure_location }}"
         state: present
@@ -30,10 +26,6 @@
     # Create a virtual network
     - name: Azure | Create virtual network
       azure.azcollection.azure_rm_virtualnetwork:
-        client_id: "{{ azure_client_id }}"
-        secret: "{{ azure_secret }}"
-        subscription_id: "{{ azure_subscription_id }}"
-        tenant: "{{ azure_tenant }}"
         resource_group: "{{ azure_resource_group }}"  
         name: "{{ azure_virtual_network }}"
         address_prefixes_cidr:
@@ -45,10 +37,6 @@
     # Create a subnet and associate with the virtual network
     - name: Create a subnet
       azure.azcollection.azure_rm_subnet:
-        client_id: "{{ azure_client_id }}"
-        secret: "{{ azure_secret }}"
-        subscription_id: "{{ azure_subscription_id }}"
-        tenant: "{{ azure_tenant }}"
         resource_group: "{{ azure_resource_group }}"
         name: "{{ azure_virtual_subnet }}"
         virtual_network_name: "{{ azure_virtual_network }}"
