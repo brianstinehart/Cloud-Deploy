@@ -15,6 +15,9 @@
         azure_virtual_network: "{{ name_prefix }}-network"
         azure_virtual_subnet:  "{{ (name_prefix + 'subnet')  | lower | regex_replace('[^0-9a-z]+', '') }}"
 
+    - name: Install specified python requirements
+      ansible.builtin.pip:
+        requirements: ~/.ansible/collections/ansible_collections/azure/azcollection/requirements-azure.txt
 
     # Create a resource group
     - name: Azure | Create a resource group
