@@ -15,7 +15,10 @@
         azure_virtual_network: "{{ name_prefix }}-network"
         azure_virtual_subnet:  "{{ (name_prefix + 'subnet')  | lower | regex_replace('[^0-9a-z]+', '') }}"
 
-    - name: Install specified python requirements
+    - name: Install Azure Collection
+      ansible.builtin.command: ansible-galaxy collection install azure.azcollection
+    
+    - name: Install specified python requirements for Azure Collection
       ansible.builtin.pip:
         requirements: ~/.ansible/collections/ansible_collections/azure/azcollection/requirements-azure.txt
 
