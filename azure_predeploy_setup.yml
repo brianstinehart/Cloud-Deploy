@@ -14,10 +14,6 @@
         azure_storage_account: "{{ (name_prefix + 'storage') | lower | regex_replace('[^0-9a-z]+', '') }}"
         azure_virtual_network: "{{ name_prefix }}-network"
         azure_virtual_subnet:  "{{ (name_prefix + 'subnet')  | lower | regex_replace('[^0-9a-z]+', '') }}"
-    
-    - name: Install specified python requirements for Azure Collection
-      ansible.builtin.pip:
-        requirements: /usr/share/ansible/collections/ansible_collections/azure/azcollection/requirements-azure.txt
 
     # Create a resource group
     - name: Azure | Create a resource group
