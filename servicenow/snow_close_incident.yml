@@ -14,7 +14,8 @@
         state: present
         number: INC0010003
         data:
-          work_notes: "This incident has been closed by Ansible"
-          incident_state: 4
+          state: 6
+          close_code: "Resolved by caller"
           close_notes: "Incident resolved and closed by Ansible"
+          work_notes: "This incident has been closed by Ansible"
       register: new_incident
