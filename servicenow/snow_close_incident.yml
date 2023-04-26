@@ -12,10 +12,10 @@
         password: "{{ snow_password }}"
         instance: "{{ snow_instance }}"
         state: present
-        number: INC0010003
+        number: "{{ inc_number }}"
         data:
           state: 6
           close_code: "Resolved by caller"
-          close_notes: "Incident resolved and closed by Ansible"
+          close_notes: "{{ close_notes }}"
           work_notes: "This incident has been closed by Ansible"
       register: new_incident
