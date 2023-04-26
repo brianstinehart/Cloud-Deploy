@@ -1,0 +1,20 @@
+---
+- name: ServiceNow Create Incident
+  hosts: localhost
+  connection: local
+  gather_facts: no
+  
+  tasks:
+
+    - name: Close Incident
+      snow_record:
+        username: "{{ snow_username }}"
+        password: "{{ snow_password }}"
+        instance: "{{ snow_instance }}"
+        state: present
+        number: INC0010003
+        data:
+          work_notes: "This incident has been closed by Ansible"
+          incident_state: 4
+          close_notes: "Incident resolved and closed by Ansible"
+      register: new_incident
