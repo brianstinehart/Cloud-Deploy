@@ -1,5 +1,5 @@
 ---
-- name: ServiceNow Create Incident
+- name: ServiceNow Close Incident
   hosts: localhost
   connection: local
   gather_facts: no
