@@ -9,7 +9,7 @@
     - name: Create change request
       servicenow.itsm.change_request:
         instance:
-          host: "{{ snow_instance }}"
+          host: "{{ snow_host }}"
           username: "{{ snow_username }}"
           password: "{{ snow_password }}"
 
