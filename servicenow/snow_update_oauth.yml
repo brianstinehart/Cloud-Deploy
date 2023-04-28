@@ -1,0 +1,21 @@
+---
+- name: ServiceNow Update oAuth Provider
+  hosts: localhost
+  connection: local
+  gather_facts: no
+
+  tasks:
+
+    - name: Update Application Registries for AAP OAuth Provider
+      servicenow.itsm.api:
+        instance:
+          host: "{{ snow_host }}"
+          username: "{{ snow_username }}"
+          password: "{{ snow_password }}"
+
+        resource: oauth_entity
+        action: patch
+        sys_id: 3f4733652fd121108779d6c6f699b65a
+        data:
+          client_id: "{{ client_id }}"
+          client_secret: "{{ client_secret }}"
