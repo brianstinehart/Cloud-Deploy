@@ -14,11 +14,6 @@
 
   tasks:
 
-    - name: localhost
-      ansible.builtin.debug:
-        msg: "{{ inventory_hostname }}"
-        
-
-    # - name: Set AAP certificate
-    #   set_fact:
-    #     pem_aap_certificate: "{{ lookup('file', '/etc/tower/tower.cert') }}"
+    - name: Set AAP certificate
+      set_fact:
+        pem_aap_certificate: "{{ lookup('file', '/etc/tower/tower.cert') }}"
