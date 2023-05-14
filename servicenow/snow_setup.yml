@@ -46,11 +46,27 @@
         client_secret: "{{ snow_app_result.json.client_secret }}"
         client_id: "{{ snow_app_result.json.client_id }}"
 
+    - name: Set AAP certificate
+      set_fact:
+        pem_aap_certificate: "{{ lookup('file', '/etc/tower/tower.cert') }}"
+
     - name: Print Message
       debug:
         msg: 
         - "This is your client secret: {{ client_secret }}"
         - "This is your client ID: {{ client_id }}"
+
+    - name: Update System Definition Certificates for AAP
+      snow_record:
+        username: "{{ username }}"
+        password: "{{ password }}"
+        instance: "{{ instance }}"
+        state: present
+        table: sys_certificate
+        lookup_field: sys_id
+        number: f4e67b252fd121108779d6c6f699b6a1
+        data: 
+          pem_certificate: "{{ client_id }}"
 
     - name: Update Application Registries for AAP OAuth Provider
       snow_record:
