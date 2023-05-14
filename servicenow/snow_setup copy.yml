@@ -17,7 +17,7 @@
 
     - name: "Read pre-existing file..."
       ansible.builtin.debug:
-        msg: "{{ lookup('file', '{{ myfile }}_read') }}"
+        msg: "{{ lookup('file', '{{ myfile }}') }}"
     
     # - name: Set AAP certificate
     #   set_fact:
