@@ -12,7 +12,7 @@
     - name: Apply provided hostname configuration
       cisco.ios.ios_hostname:
         config:
-          hostname: {{ cpe_hostname }}
+          hostname: "{{ cpe_hostname }}"
         state: merged
 
     # - name: FETCH NTP STATUS
