@@ -1,0 +1,27 @@
+---
+- name: CONFIGURE CISCO DEVICE
+  hosts: all
+  connection: network_cli
+  gather_facts: false
+
+  vars:
+    ntp_server: "216.239.35.0"
+
+  tasks:
+
+    - name: Apply provided hostname configuration
+      cisco.ios.ios_hostname:
+        config:
+          hostname: Router1
+        state: merged
+
+    # - name: FETCH NTP STATUS
+    #   ios_command:
+    #     commands:
+    #       - show ntp config
+    #       - show ntp status
+    #   register: ntp_config
+
+    # - name: DISPLAY NTP STATUS INTO TERMINAL WINDOW
+    #   debug:
+    #     msg: "{{ntp_config.stdout_lines}}"
