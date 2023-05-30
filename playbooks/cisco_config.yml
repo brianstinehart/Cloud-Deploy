@@ -25,14 +25,3 @@
       cisco.ios.ios_config:
         lines:
           - "ip default-gateway {{ default_gateway }}"
-
-    # - name: FETCH NTP STATUS
-    #   ios_command:
-    #     commands:
-    #       - show ntp config
-    #       - show ntp status
-    #   register: ntp_config
-
-    # - name: DISPLAY NTP STATUS INTO TERMINAL WINDOW
-    #   debug:
-    #     msg: "{{ntp_config.stdout_lines}}"

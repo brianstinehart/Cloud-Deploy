@@ -1,0 +1,24 @@
+---
+- name: CONFIGURE CISCO DEVICE
+  hosts: all
+  connection: network_cli
+  gather_facts: false
+
+  vars: 
+    upgrade_ios_version: 	17.03.07
+
+  tasks:
+
+    - name: CHECK CURRENT VERSION
+      cisco.ios.facts:
+        gather_subset: config
+
+    - debug: 
+        msg: 
+        - "Current version is {{ ansible_net_version }}"
+        - "Upgrade image is {{ upgrade_ios_version }}"
+        
+    - debug: 
+        msg: 
+        - "Image is not compliant and will be upgraded"
+      when: ansible_net_version != upgrade_ios_version
