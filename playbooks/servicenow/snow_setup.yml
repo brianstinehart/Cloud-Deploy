@@ -47,10 +47,6 @@
         client_secret: "{{ snow_app_result.json.client_secret }}"
         client_id: "{{ snow_app_result.json.client_id }}"
 
-    - name: Set AAP certificate
-      set_fact:
-        pem_aap_certificate: "{{ lookup('file', '/etc/tower/tower.cert') }}"
-
     - name: Print Message
       debug:
         msg: 
