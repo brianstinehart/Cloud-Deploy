@@ -24,10 +24,10 @@
         body_format: json
         body:
           name: Brian ServiceNow Dev
-          description: "{{ instance }}"
+          description: "{{ snow_instance }}"
           organization: "1"
           authorization_grant_type: "authorization-code"
-          redirect_uris: "https://{{ instance }}.service-now.com/oauth_redirect.do"
+          redirect_uris: "https://{{ snow_instance }}.service-now.com/oauth_redirect.do"
           client_type: "confidential"
         status_code: 201
         validate_certs: false
@@ -55,9 +55,9 @@
 
     - name: Update System Definition Certificates for AAP
       snow_record:
-        username: "{{ username }}"
-        password: "{{ password }}"
-        instance: "{{ instance }}"
+        username: "{{ snow_username }}"
+        password: "{{ snow_password }}"
+        instance: "{{ snow_instance }}"
         state: present
         table: sys_certificate
         lookup_field: sys_id
@@ -67,9 +67,9 @@
 
     - name: Update Application Registries for AAP OAuth Provider
       snow_record:
-        username: "{{ username }}"
-        password: "{{ password }}"
-        instance: "{{ instance }}"
+        username: "{{ snow_username }}"
+        password: "{{ snow_password }}"
+        instance: "{{ snow_instance }}"
         state: present
         table: oauth_entity
         lookup_field: sys_id
@@ -82,9 +82,9 @@
 
     - name: Update REST Message for Deploy App on Pre-Prod
       snow_record:
-        username: "{{ username }}"
-        password: "{{ password }}"
-        instance: "{{ instance }}"
+        username: "{{ snow_username }}"
+        password: "{{ snow_password }}"
+        instance: "{{ snow_instance }}"
         state: present
         table: sys_rest_message
         lookup_field: sys_id
@@ -94,9 +94,9 @@
 
     - name: Update HTTP Method for REST Message for Deploy App on Pre-Prod
       snow_record:
-        username: "{{ username }}"
-        password: "{{ password }}"
-        instance: "{{ instance }}"
+        username: "{{ snow_username }}"
+        password: "{{ snow_password }}"
+        instance: "{{ snow_instance }}"
         state: present
         table: sys_rest_message_fn
         lookup_field: sys_id
