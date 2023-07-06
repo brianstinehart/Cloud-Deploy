@@ -16,7 +16,7 @@
 
     - name: Create ServiceNow Application
       ansible.builtin.uri:
-        url: "https://{{ controller_url_prefix }}.internal/api/v2/applications/"
+        url: "https://{{ controller_url_prefix }}.{{ controller_url_suffix }}/api/v2/applications/"
         user: "{{ uri_user }}"
         password: "{{ uri_password }}"
         method: POST
