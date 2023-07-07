@@ -20,7 +20,7 @@
 
     - name: Print Message
       debug:
-        var: wt_result.json.results.[id]
+        var: wt_result.*results[*].id
       # register: client_secret
 
     - name: Set client secret and ID variables
