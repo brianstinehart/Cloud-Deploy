@@ -20,12 +20,12 @@
 
     - name: Print Message
       debug:
-        var: wt_result.json.results[*].[id]
+        var: wt_result.json.results.[id]
       # register: client_secret
 
     - name: Set client secret and ID variables
       set_fact:
-        workflow_id: "{{ wt_result.json.results[*].[id] }}"
+        workflow_id: "{{ wt_result.json.results.[id] }}"
 
     - name: Print Message
       debug:
