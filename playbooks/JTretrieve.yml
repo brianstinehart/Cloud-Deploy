@@ -16,7 +16,10 @@
 
     - name: Print Message
       debug:
-        msg: "{{ wt_result }}"
+        msg: "{{ wt_result|json_query(query) }}"
+      vars:
+        name: 'Test Workflow'
+        query: "[?name=='{{ name }}'].id"
 
     - name: Print Message
       debug:
