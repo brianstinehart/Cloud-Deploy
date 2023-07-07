@@ -20,7 +20,7 @@
 
     - name: Print Message
       debug:
-        var: wt_result.json.count "{{ wt_result | community.general.json_query('json.results[*].id') }}"
+        var: "{{ wt_result | community.general.json_query('json.results[*].id') }}"
       # register: client_secret
 
     - name: Set client secret and ID variables
