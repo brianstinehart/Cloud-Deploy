@@ -25,7 +25,7 @@
 
     - name: Set client secret and ID variables
       set_fact:
-        workflow_id: "{{ wt_result.json.results.id }}"
+        workflow_id: "{{ wt_result | community.general.json_query('json.results[*].id') }}"
 
     - name: Print Message
       debug:
