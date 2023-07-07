@@ -11,7 +11,6 @@
         password: "{{ uri_password }}"
         method: GET
         force_basic_auth: true
-        status_code: 201
         validate_certs: false
       register: wt_result
 
