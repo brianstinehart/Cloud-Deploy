@@ -6,7 +6,7 @@
 
     - name: Grab Workflow Template
       ansible.builtin.uri:
-        url: "https://{{ controller_url_prefix }}.{{ controller_url_suffix }}/api/v2/workflow_job_templates/"
+        url: "https://{{ controller_url_prefix }}.{{ controller_url_suffix }}/api/v2/job_templates/"
         user: "{{ uri_user }}"
         password: "{{ uri_password }}"
         method: GET
@@ -20,12 +20,12 @@
 
     - name: Print Message
       debug:
-        var: "{{ wt_result | community.general.json_query('json.results.id') }}"
+        var: "{{ wt_result | community.general.json_query('json.results[*].id') }}"
       # register: client_secret
 
     - name: Set client secret and ID variables
       set_fact:
-        workflow_id: "{{ wt_result | community.general.json_query('json.results.id') }}"
+        workflow_id: "{{ wt_result | community.general.json_query('json.results[*].id') }}"
 
     - name: Print Message
       debug:
