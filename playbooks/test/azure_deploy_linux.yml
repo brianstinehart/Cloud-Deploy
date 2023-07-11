@@ -20,7 +20,7 @@
 
     - name: Launch RHEL Instance
       azure_rm_virtualmachine:
-        client_id: "{{ client_id }}"
+        client_id: "{{ AZURE_CLIENT_ID }}"
         secret: "{{ secret }}"
         subscription_id: "{{ subscription_id }}"
         tenant: "{{ tenant }}"
