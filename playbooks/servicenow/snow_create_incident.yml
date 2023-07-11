@@ -13,7 +13,7 @@
         instance: "{{ snow_instance }}"
         state: present
         data:
-          short_description: "This is a test incident opened by Ansible"
+          short_description: "{{ short_description }}"
           urgency: "{{ urgency }}"
           impact: "{{ impact }}"
       register: new_incident
