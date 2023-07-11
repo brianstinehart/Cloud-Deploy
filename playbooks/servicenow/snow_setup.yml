@@ -6,7 +6,7 @@
 
     - name: Create ServiceNow Application
       ansible.builtin.uri:
-        url: "https://{{ controller_url_prefix }}.{{ controller_url_suffix }}/api/v2/applications/"
+        url: "https://{{ controller_url }}/api/v2/applications/"
         user: "{{ uri_user }}"
         password: "{{ uri_password }}"
         method: POST
@@ -67,8 +67,8 @@
         data: 
           client_id: "{{ client_id }}"
           client_secret: "{{ client_secret }}"
-          auth_url: "https://{{ controller_url_prefix }}.{{ controller_url_suffix }}/api/o/authorize/"
-          token_url: "https://{{ controller_url_prefix }}.{{ controller_url_suffix }}/api/o/token/"
+          auth_url: "https://{{ controller_url }}/api/o/authorize/"
+          token_url: "https://{{ controller_url }}/api/o/token/"
 
     - name: Update REST Message for Deploy App on Pre-Prod
       snow_record:
@@ -80,7 +80,7 @@
         lookup_field: sys_id
         number: 9b2afbe52fd121108779d6c6f699b6f6
         data: 
-          rest_endpoint: "https://{{ controller_url_prefix }}.{{ controller_url_suffix }}/api/v2/workflow_job_templates/45/launch/"
+          rest_endpoint: "https://{{ controller_url }}/api/v2/workflow_job_templates/45/launch/"
 
     - name: Update HTTP Method for REST Message for Deploy App on Pre-Prod
       snow_record:
@@ -92,4 +92,4 @@
         lookup_field: sys_id
         number: 097bbf292fd121108779d6c6f699b6fb
         data: 
-          rest_endpoint: "https://{{ controller_url_prefix }}.{{ controller_url_suffix }}/api/v2/workflow_job_templates/45/launch/"
+          rest_endpoint: "https://{{ controller_url }}/api/v2/workflow_job_templates/45/launch/"
