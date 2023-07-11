@@ -40,4 +40,3 @@
         name: "{{ azure_virtual_subnet }}"
         virtual_network_name: "{{ azure_virtual_network }}"
         address_prefix_cidr: "{{ ptr_zone_cidr }}"
-        
