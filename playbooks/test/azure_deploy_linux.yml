@@ -20,15 +20,15 @@
 
     - name: Launch RHEL Instance
       azure_rm_virtualmachine:
-        client_id: "{{ client }}"
+        client_id: "{{ client_id }}"
         secret: "{{ secret }}"
-        subscription_id: "{{ subscription }}"
+        subscription_id: "{{ subscription_id }}"
         tenant: "{{ tenant }}"
         resource_group: "{{ azure_resource_group }}"
         name: "{{ name_prefix + '-s' + item + '-WebServer'}}"
         vm_size: "{{ azure_gitlab_instance_type }}"
         managed_disk_type: "{{ azure_storage_account_type }}"
-        admin_username: "{{ username }}"
+        admin_username: "{{ ad_user }}"
         admin_password: "{{ password }}"
         started: True
         state: present
