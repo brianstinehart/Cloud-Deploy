@@ -20,16 +20,16 @@
 
     - name: Launch RHEL Instance
       azure_rm_virtualmachine:
-        client_id: "{{ AZURE_CLIENT_ID }}"
-        secret: "{{ secret }}"
-        subscription_id: "{{ subscription_id }}"
-        tenant: "{{ tenant }}"
+        client_id: "{{ azure_client_id }}"
+        secret: "{{ azure_secret }}"
+        subscription_id: "{{ azure_subscription_id }}"
+        tenant: "{{ azure_tenant }}"
         resource_group: "{{ azure_resource_group }}"
         name: "{{ name_prefix + '-s' + item + '-WebServer'}}"
         vm_size: "{{ azure_gitlab_instance_type }}"
         managed_disk_type: "{{ azure_storage_account_type }}"
-        admin_username: "{{ ad_user }}"
-        admin_password: "{{ password }}"
+        admin_username: "bstineha"
+        admin_password: "{{ azure_admin_pass }}"
         started: True
         state: present
         public_ip_allocation_method: Dynamic
