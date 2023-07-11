@@ -13,7 +13,7 @@
         azure_resource_group: "{{ name_prefix }}-resource"
         azure_storage_account: "{{ (name_prefix + 'storage') | lower | regex_replace('[^0-9a-z]+', '') }}"
         azure_virtual_network: "{{ name_prefix }}-network"
-        azure_virtual_subnet: "{{ (name_prefix + 'subnet')  | lower | regex_replace('[^0-9a-z]+', '') }}"
+        azure_virtual_subnet: "{{ (name_prefix + 'subnet') | lower | regex_replace('[^0-9a-z]+', '') }}"
 
     # Create a resource group
     - name: Azure | Create a resource group
