@@ -17,14 +17,14 @@
 
     # Create a resource group
     - name: Azure | Create a resource group
-      azure.azcollection.azure_rm_resourcegroup:
+      azure_rm_resourcegroup:
         name: "{{ azure_resource_group }}"
         location: "{{ azure_location }}"
         state: present
 
     # Create a virtual network
     - name: Azure | Create virtual network
-      azure.azcollection.azure_rm_virtualnetwork:
+      azure_rm_virtualnetwork:
         resource_group: "{{ azure_resource_group }}"
         name: "{{ azure_virtual_network }}"
         address_prefixes_cidr:
@@ -35,7 +35,7 @@
 
     # Create a subnet and associate with the virtual network
     - name: Create a subnet
-      azure.azcollection.azure_rm_subnet:
+      azure_rm_subnet:
         resource_group: "{{ azure_resource_group }}"
         name: "{{ azure_virtual_subnet }}"
         virtual_network_name: "{{ azure_virtual_network }}"
