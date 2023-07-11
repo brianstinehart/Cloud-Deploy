@@ -1,19 +1,19 @@
 ---
 - name: Predeployment setup in Azure
   hosts: localhost
-  gather_facts: False
+  gather_facts: false
   vars_files:
     - 'vars/azure.yml'
   vars:
     teardown: false
   tasks:
-  
+
     - name: Set resource facts
-      set_fact:
-        azure_resource_group:  "{{ name_prefix }}-resource"
+      ansible.builtin.set_fact:
+        azure_resource_group: "{{ name_prefix }}-resource"
         azure_storage_account: "{{ (name_prefix + 'storage') | lower | regex_replace('[^0-9a-z]+', '') }}"
         azure_virtual_network: "{{ name_prefix }}-network"
-        azure_virtual_subnet:  "{{ (name_prefix + 'subnet')  | lower | regex_replace('[^0-9a-z]+', '') }}"
+        azure_virtual_subnet: "{{ (name_prefix + 'subnet')  | lower | regex_replace('[^0-9a-z]+', '') }}"
 
     # Create a resource group
     - name: Azure | Create a resource group
@@ -25,13 +25,13 @@
     # Create a virtual network
     - name: Azure | Create virtual network
       azure.azcollection.azure_rm_virtualnetwork:
-        resource_group: "{{ azure_resource_group }}"  
+        resource_group: "{{ azure_resource_group }}"
         name: "{{ azure_virtual_network }}"
         address_prefixes_cidr:
-            - "{{ ptr_zone_cidr }}"
+          - "{{ ptr_zone_cidr }}"
         dns_servers:
-            - "8.8.8.8"
-      register: virtual_network_facts    
+          - "8.8.8.8"
+      register: virtual_network_facts
 
     # Create a subnet and associate with the virtual network
     - name: Create a subnet
@@ -40,3 +40,4 @@
         name: "{{ azure_virtual_subnet }}"
         virtual_network_name: "{{ azure_virtual_network }}"
         address_prefix_cidr: "{{ ptr_zone_cidr }}"
+        
