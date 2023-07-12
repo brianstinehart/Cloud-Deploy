@@ -1,0 +1,9 @@
+---
+- name: Create instances in AWS
+  hosts: localhost
+  connection: local
+  become: false
+  gather_facts: false
+  tasks:
+    - include_role:
+        name: ../roles/manage_ec2_instances
