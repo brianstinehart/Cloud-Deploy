@@ -7,7 +7,7 @@
   tasks:
   
     - name: Include default variables for provisioning
-      ansible.builtin.include_vars: ../vars/main.yml
+      ansible.builtin.include_vars: "../vars/main.yml"
     
     - name: ensure workshop folder {{ ec2_name_prefix }} exists
       ansible.builtin.file:
