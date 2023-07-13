@@ -1,0 +1,18 @@
+---
+- name: Create resources in AWS
+  hosts: localhost
+  connection: local
+  become: false
+  gather_facts: false
+  tasks:
+  
+    - name: ensure workshop folder {{ ec2_name_prefix }} exists
+      ansible.builtin.file:
+        path: "{{ playbook_dir }}/{{ ec2_name_prefix }}"
+        state: directory    
+    
+    - name: Include default variables for provisioning
+      ansible.builtin.include_vars: ../vars/main.yml   
+    
+    - ansible.builtin.include_role:
+        name: ../roles/aws/resources.yml
