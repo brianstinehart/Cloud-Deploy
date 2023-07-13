@@ -6,13 +6,13 @@
   gather_facts: false
   tasks:
   
+    - name: Include default variables for provisioning
+      ansible.builtin.include_vars: ../vars/main.yml
+    
     - name: ensure workshop folder {{ ec2_name_prefix }} exists
       ansible.builtin.file:
         path: "{{ playbook_dir }}/{{ ec2_name_prefix }}"
-        state: directory    
-    
-    - name: Include default variables for provisioning
-      ansible.builtin.include_vars: ../vars/main.yml   
+        state: directory
     
     - ansible.builtin.include_role:
         name: ../roles/aws/resources.yml
