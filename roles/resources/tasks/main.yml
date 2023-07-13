@@ -12,7 +12,6 @@
       Info: "Username that provisioned this-> {{ aws_user }}"
       Linklight: "This was provisioned through the linklight provisioner"
       Students: "{{ student_total }}"
-      Workshop_type: "{{ workshop_type }}"
       Workshop: "{{ ec2_name_prefix }}"
       ansible-workshops: "true"
   register: create_vpc
@@ -40,7 +39,6 @@
       Info: "Username that provisioned this-> {{ aws_user }}"
       Linklight: "This was provisioned through the linklight provisioner"
       Students: "{{ student_total }}"
-      Workshop_type: "{{ workshop_type }}"
       Workshop: "{{ ec2_name_prefix }}"
       ansible-workshops: "true"
     rules: "{{ all_rules }}"
@@ -64,7 +62,6 @@
       Info: "Username that provisioned this-> {{ aws_user }}"
       Linklight: "This was provisioned through the linklight provisioner"
       Students: "{{ student_total }}"
-      Workshop_type: "{{ workshop_type }}"
       Workshop: "{{ ec2_name_prefix }}"
       ansible-workshops: "true"
   register: create_subnet
@@ -84,7 +81,6 @@
       Info: "Username that provisioned this-> {{ aws_user }}"
       Linklight: "This was provisioned through the linklight provisioner"
       Students: "{{ student_total }}"
-      Workshop_type: "{{ workshop_type }}"
       Workshop: "{{ ec2_name_prefix }}"
       ansible-workshops: "true"
   register: create_subnet2
@@ -100,7 +96,6 @@
       Info: "Username that provisioned this-> {{ aws_user }}"
       Linklight: "This was provisioned through the linklight provisioner"
       Students: "Total {{ student_total }}"
-      Workshop_type: "{{ workshop_type }}"
       Workshop: "{{ ec2_name_prefix }}"
       ansible-workshops: "true"
   register: igw
@@ -121,7 +116,6 @@
       Info: "Username that provisioned this-> {{ aws_user }}"
       Linklight: "This was provisioned through the linklight provisioner"
       Students: "{{ student_total }}"
-      Workshop_type: "{{ workshop_type }}"
       Workshop: "{{ ec2_name_prefix }}"
       ansible-workshops: "true"
   register: routetable
