@@ -15,4 +15,4 @@
         state: directory
     
     - ansible.builtin.include_role:
-        name: ../../roles/aws/resources.yml
+        name: ../../roles/aws/resources
