@@ -16,4 +16,6 @@
           short_description: "{{ short_description }}"
           urgency: "{{ urgency }}"
           impact: "{{ impact }}"
+          assigned_to: "{{ assigned_to }}"
+          caller_id: "{{ caller_id }}"
       register: new_incident
