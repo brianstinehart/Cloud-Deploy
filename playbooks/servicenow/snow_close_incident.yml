@@ -15,7 +15,7 @@
         number: "{{ inc_number }}"
         data:
           state: 6
-          close_code: "Resolved by caller"
+          close_code: "Resolved by change"
           close_notes: "{{ close_notes }}"
           work_notes: "This incident has been closed by Ansible"
       register: new_incident

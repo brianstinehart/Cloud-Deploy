@@ -18,4 +18,4 @@
         close_code: "successful"
         close_notes: "{{ close_notes }}"
         assignment_group: "Software"
-        number: "{{ inc_number }}"
+        number: "{{ chg_number }}"
