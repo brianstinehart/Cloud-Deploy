@@ -21,3 +21,13 @@
         priority: moderate
         risk: high
         impact: medium
+      register: new_chg_request
+
+    - name: set stats
+      set_stats:
+        data:
+          chg_number: "{{ new_chg_request.record.number }}"
+
+    - name: Print Message
+      debug:
+        var: new_chg_request.record.number

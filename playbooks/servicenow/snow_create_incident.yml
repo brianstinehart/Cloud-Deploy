@@ -18,6 +18,7 @@
           impact: "{{ impact }}"
           assigned_to: "{{ assigned_to }}"
           caller_id: "{{ caller_id }}"
+          description: "{{ description }}"
       register: new_incident
 
     - name: set stats
