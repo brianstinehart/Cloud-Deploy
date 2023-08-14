@@ -20,10 +20,10 @@
           caller_id: "{{ caller_id }}"
       register: new_incident
 
-    # - name: set stats
-    #   set_stats:
-    #     data:
-    #       inc_number: "{{ new_incident.record.number }}"
+    - name: set stats
+      set_stats:
+        data:
+          inc_number: "{{ new_incident.record.number }}"
 
     - name: Print Message
       debug:
