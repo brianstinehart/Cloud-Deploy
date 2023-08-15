@@ -16,12 +16,14 @@
         type: "{{ chg_type }}"
         state: new
         # requested_by: some.user
-        assigned_to: "{{ assigned_to }}"
         short_description: "{{ short_description }}"
         description: "{{ description }}"
         priority: "{{ priority }}"
         risk: "{{ risk }}"
         impact: "{{ impact }}"
+
+        other:
+          assigned_to: "{{ assigned_to }}"
       register: new_chg_request
 
     - name: set stats
