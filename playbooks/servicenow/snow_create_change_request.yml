@@ -13,14 +13,15 @@
           username: "{{ snow_username }}"
           password: "{{ snow_password }}"
 
-        type: standard
+        type: "{{ chg_type }}"
         state: new
         # requested_by: some.user
-        short_description: Install new Cisco
-        description: Please install new Cat. 6500 in Data center 01
-        priority: moderate
-        risk: high
-        impact: medium
+        assigned_to: "{{ assigned_to }}"
+        short_description: "{{ short_description }}"
+        description: "{{ description }}"
+        priority: "{{ priority }}"
+        risk: "{{ risk }}"
+        impact: "{{ impact }}"
       register: new_chg_request
 
     - name: set stats

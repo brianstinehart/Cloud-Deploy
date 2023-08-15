@@ -6,7 +6,7 @@
 
   tasks:
 
-    - name: Create change request
+    - name: Close change request
       servicenow.itsm.change_request:
         instance:
           host: "{{ snow_host }}"
