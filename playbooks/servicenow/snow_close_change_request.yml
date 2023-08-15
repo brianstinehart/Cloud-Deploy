@@ -17,5 +17,5 @@
         # requested_by: some.user
         close_code: "successful"
         close_notes: "{{ close_notes }}"
-        assignment_group: "Software"
+        # assignment_group: "Software"
         number: "{{ chg_number }}"
