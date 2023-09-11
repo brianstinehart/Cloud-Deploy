@@ -1,4 +1,5 @@
 ---
+workshop_type: demo
 aws_user: admin
 ec2_name_prefix: RH
 ec2_region: ap-southeast-2
