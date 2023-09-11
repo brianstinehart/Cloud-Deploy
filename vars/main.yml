@@ -1,4 +1,5 @@
 ---
+dns_type: aws
 workshop_type: demo
 aws_user: admin
 ec2_name_prefix: RH
