@@ -8,6 +8,9 @@
   
     - name: Include default variables for provisioning
       ansible.builtin.include_vars: ../../vars/main.yml
+
+    - name: Include default variables for provisioning
+      ansible.builtin.include_vars: ../../vars/vpc_rules.yml
     
     - name: ensure workshop folder {{ ec2_name_prefix }} exists
       ansible.builtin.file:
