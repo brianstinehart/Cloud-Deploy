@@ -3,7 +3,7 @@ workshop_dns_zone: "rhdemo.io"
 dns_type: aws
 workshop_type: demo
 aws_user: admin
-ec2_name_prefix: RH
+ec2_name_prefix: rh
 ec2_region: ap-southeast-2
 ec2_wait: true
 # need to circle back and fix this for teardown - sean
