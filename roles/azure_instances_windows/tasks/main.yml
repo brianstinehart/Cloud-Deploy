@@ -30,6 +30,8 @@
     name: "{{ name_prefix + '-s' + item + '-w1'}}"
     vm_size: "{{ azure_windows_instance_type }}"
     managed_disk_type: "{{ azure_storage_account_type }}"
+    admin_username: "bstineha"
+    admin_password: "ansible123!"
     started: True
     os_type: Windows
     state: present
