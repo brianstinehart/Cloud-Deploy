@@ -97,7 +97,7 @@
     ansible_shell_type: "cmd"
     ansible_user: "{{ azure_admin_user }}"
     ansible_password: "{{ azure_admin_pass }}"
-    ansible_winrm_transport: "credssp"
+    ansible_winrm_transport: "ntlm"
     ansible_winrm_server_cert_validation: "ignore"
     student: "{{ item.invocation.module_args.tags.Student | regex_replace('[^0-9]', '') }}"
     groups: windows
