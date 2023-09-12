@@ -7,16 +7,16 @@
 
 - name: Windows | Launch instance 1
   azure_rm_virtualmachine:
-    client_id: "{{ client }}"
-    secret: "{{ secret }}"
-    subscription_id: "{{ subscription }}"
-    tenant: "{{ tenant }}"
+    # client_id: "{{ client }}"
+    # secret: "{{ secret }}"
+    # subscription_id: "{{ subscription }}"
+    # tenant: "{{ tenant }}"
     resource_group: "{{ azure_resource_group }}"
     name: "{{ name_prefix + '-s' + item + '-w1'}}"
     vm_size: "{{ azure_windows_instance_type }}"
     managed_disk_type: "{{ azure_storage_account_type }}"
-    admin_username: "{{ username }}"
-    admin_password: "{{ password }}"
+    # admin_username: "{{ username }}"
+    # admin_password: "{{ password }}"
     started: True
     os_type: Windows
     state: present
@@ -58,10 +58,10 @@
 
 - name: Windows create VM Extension
   azure_rm_virtualmachine_extension:
-    client_id: "{{ azure_client_id }}"
-    secret: "{{ azure_secret }}"
-    subscription_id: "{{ azure_subscription_id }}"
-    tenant: "{{ azure_tenant }}"
+    # client_id: "{{ azure_client_id }}"
+    # secret: "{{ azure_secret }}"
+    # subscription_id: "{{ azure_subscription_id }}"
+    # tenant: "{{ azure_tenant }}"
     resource_group: "{{ azure_resource_group }}"    
     name: custom-script
     virtual_machine_name: "{{ item.invocation.module_args.name }}"
@@ -82,8 +82,8 @@
     ansible_host: "{{ item.ansible_facts.azure_vm.properties.networkProfile.networkInterfaces[0].properties.ipConfigurations[0].properties.publicIPAddress.properties.ipAddress }}"
     private_ip:  "{{ item.ansible_facts.azure_vm.properties.networkProfile.networkInterfaces[0].properties.ipConfigurations[0].properties.privateIPAddress }}"
     ansible_port: "{{ '22' if (windows_ansible_connection is defined and windows_ansible_connection == 'ssh') else '5986' }}"
-    ansible_user: "bstineha"
-    ansible_password: "{{ azure_admin_pass }}"
+    # ansible_user: "bstineha"
+    # ansible_password: "{{ azure_admin_pass }}"
     ansible_connection: "{{ windows_ansible_connection | default('winrm') }}"
     ansible_shell_type: "cmd"
     ansible_winrm_transport: "credssp"
