@@ -3,23 +3,23 @@
     user: bstineha
 
 - block:
-  # - name: install Chocolatey
-  #   win_chocolatey:
-  #     name: chocolatey
-  #     state: present
+  - name: install Chocolatey
+    win_chocolatey:
+      name: chocolatey
+      state: present
 
-  # - name: Install Putty
-  #   win_chocolatey:
-  #     name: "{{ item }}"
-  #     ignore_checksums: true
-  #   with_items:
-  #     - putty
-  #     # - telnet
-  #     # - googlechrome
-  #   register: chocolatey_packages_install
-  #   until: chocolatey_packages_install is success
-  #   delay: 3
-  #   retries: 5
+  - name: Install Putty
+    win_chocolatey:
+      name: "{{ item }}"
+      ignore_checksums: true
+    with_items:
+      - putty
+      # - telnet
+      # - googlechrome
+    register: chocolatey_packages_install
+    until: chocolatey_packages_install is success
+    delay: 3
+    retries: 5
 
 #   - name: Create an shortcut to Docs site
 #     win_shortcut:
