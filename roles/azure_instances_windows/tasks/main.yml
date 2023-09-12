@@ -30,8 +30,8 @@
     name: "{{ name_prefix + '-s' + item + '-w1'}}"
     vm_size: "{{ azure_windows_instance_type }}"
     managed_disk_type: "{{ azure_storage_account_type }}"
-    admin_username: "bstineha"
-    admin_password: "ansible123!"
+    admin_username: "{{ azure_admin_user }}"
+    admin_password: "{{ azure_admin_pass }}"
     started: True
     os_type: Windows
     state: present
@@ -95,6 +95,8 @@
     ansible_port: "{{ '22' if (windows_ansible_connection is defined and windows_ansible_connection == 'ssh') else '5986' }}"
     ansible_connection: "{{ windows_ansible_connection | default('winrm') }}"
     ansible_shell_type: "cmd"
+    ansible_user: "{{ azure_admin_user }}"
+    ansible_password: "{{ azure_admin_pass }}"
     ansible_winrm_transport: "credssp"
     ansible_winrm_server_cert_validation: "ignore"
     student: "{{ item.invocation.module_args.tags.Student | regex_replace('[^0-9]', '') }}"

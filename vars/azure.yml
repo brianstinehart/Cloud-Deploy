@@ -54,8 +54,8 @@ windows_openssh_url: https://github.com/PowerShell/Win32-OpenSSH/releases/downlo
 ####################### AZURE INFO #######################
 ##########################################################
 
-# azure_admin_user: "brian.stinehart22@gmail.com"
-# azure_admin_pass: "IlovetheBuckeyes22!"
+azure_admin_user: "bstineha"
+azure_admin_pass: "ansible123!"
 
 # azure_client_id: 'ce6db292-6bc2-408e-a4e9-ea3ef85c1eef'
 # azure_secret: '4a98b8e7-5acb-4406-9544-b75d9738f3ee'
