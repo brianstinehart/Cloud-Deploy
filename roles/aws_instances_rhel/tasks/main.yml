@@ -1,4 +1,19 @@
 ---
+- name: RHEL instance size list length
+  ansible.builtin.debug:
+    msg: "RHEL instance size list length: {{ ec2_info[rhel].size | length }}"
+
+- name: Initialize/reset list count
+  ansible.builtin.set_fact:
+    list_count: "reset"
+
+- name: Increment list count
+  ansible.builtin.set_fact:
+    list_count: "{{ 0 | int if list_count == 'reset' else list_count | int + 1 }}"
+
+- ansible.builtin.debug:
+    msg: "list count: {{ list_count }}"
+
 - name: Create EC2 instances for node1
   amazon.aws.ec2_instance:
     state: running
