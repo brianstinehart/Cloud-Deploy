@@ -23,8 +23,8 @@
 
     ## find AMI dynamically
     - ansible.builtin.include_role:
-        name: '../../roles/ami_find/ami_find_{{ workshop_type }}.yml'
+        name: '../../roles/ami_find/ami_find_{{ workshop_type }}'
 
     ## Instance creation
     - ansible.builtin.include_role:
-        name: '../../roles/aws_instances/{{ workshop_type }}instance_provision.yml'
+        name: '../../roles/aws_instances/{{ workshop_type }}instance_provision'
