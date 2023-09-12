@@ -1,0 +1,14 @@
+---
+- name: Create resources and instances in Azure
+  hosts: localhost
+  connection: local
+  become: false
+  gather_facts: false
+  tasks:
+  
+    - name: Include default variables for provisioning
+      ansible.builtin.include_vars: ../../vars/azure.yml
+
+    ## Instance creation
+    - ansible.builtin.include_role:
+        name: ../../roles/azure_instances_windows

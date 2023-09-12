@@ -1,5 +1,5 @@
 ---
-- name: Create resources in AWS
+- name: Create resources and instances in AWS
   hosts: localhost
   connection: local
   become: false
