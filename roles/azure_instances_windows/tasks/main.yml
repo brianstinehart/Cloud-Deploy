@@ -92,13 +92,15 @@
     hostname: "{{ item.invocation.module_args.tags.DNSName }}"
     ansible_host: "{{ item.ansible_facts.azure_vm.properties.networkProfile.networkInterfaces[0].properties.ipConfigurations[0].properties.publicIPAddress.properties.ipAddress }}"
     private_ip:  "{{ item.ansible_facts.azure_vm.properties.networkProfile.networkInterfaces[0].properties.ipConfigurations[0].properties.privateIPAddress }}"
-    ansible_port: "{{ '22' if (windows_ansible_connection is defined and windows_ansible_connection == 'ssh') else '5985' }}"
+    ansible_port: "{{ '22' if (windows_ansible_connection is defined and windows_ansible_connection == 'ssh') else '5986' }}"
     ansible_connection: "{{ windows_ansible_connection | default('winrm') }}"
     ansible_shell_type: "cmd"
     ansible_user: "{{ azure_admin_user }}"
     ansible_password: "{{ azure_admin_pass }}"
-    ansible_winrm_transport: "basic"
+    ansible_winrm_transport: "ntlm"
     ansible_winrm_server_cert_validation: "ignore"
+    ansible_winrm_operation_timeout_sec: 120
+    ansible_winrm_read_timeout_sec: 150
     student: "{{ item.invocation.module_args.tags.Student | regex_replace('[^0-9]', '') }}"
     groups: windows
   with_items: "{{ windows_instances.results }}"  
