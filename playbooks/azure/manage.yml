@@ -1,6 +1,6 @@
 ---
 - name: Create resources and instances in Azure
-  hosts: localhost
+  hosts: all
   connection: local
   become: false
   gather_facts: false
