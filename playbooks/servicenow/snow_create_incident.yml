@@ -7,18 +7,20 @@
   tasks:
 
     - name: Create Incident
-      snow_record:
-        username: "{{ snow_username }}"
-        password: "{{ snow_password }}"
-        instance: "{{ snow_instance }}"
-        state: present
-        data:
-          short_description: "{{ short_description }}"
-          urgency: "{{ urgency }}"
-          impact: "{{ impact }}"
+      servicenow.itsm.incident:
+        instance:
+          host: "{{ snow_host }}"
+          username: "{{ snow_username }}"
+          password: "{{ snow_password }}"
+
+        state: new
+        short_description: "{{ short_description }}"
+        urgency: "{{ urgency }}"
+        impact: "{{ impact }}"
+        caller: "{{ caller_id }}"
+        description: "{{ description }}"
+        other:
           assigned_to: "{{ assigned_to }}"
-          caller_id: "{{ caller_id }}"
-          description: "{{ description }}"
       register: new_incident
 
     - name: set stats
