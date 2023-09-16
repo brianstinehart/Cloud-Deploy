@@ -17,10 +17,10 @@
         short_description: "{{ short_description }}"
         urgency: "{{ urgency }}"
         impact: "{{ impact }}"
-        caller: "{{ caller_id }}"
         description: "{{ description }}"
         other:
           assigned_to: "{{ assigned_to }}"
+          caller_id: "{{ caller_id }}"
       register: new_incident
 
     - name: set stats
