@@ -4,12 +4,12 @@
 
 - block:
   - name: install Chocolatey
-    win_chocolatey:
+    chocolatey.chocolatey.win_chocolatey:
       name: chocolatey
       state: present
 
   - name: Install Putty
-    win_chocolatey:
+    chocolatey.chocolatey.win_chocolatey:
       name: "{{ item }}"
       ignore_checksums: true
     with_items:
@@ -54,27 +54,27 @@
 #       icon: '%ProgramFiles(x86)%\Google\Chrome\Application\chrome.exe,0'
 
   - name: Create directory
-    win_file:
+    ansible.windows.win_file:
       path: C:\Users\{{ user }}\Documents\Interactive
       state: directory
 
   - name: Create Readme file
-    win_copy:
+    ansible.windows.win_copy:
       dest: C:\Users\{{ user }}\Documents\Interactive\README.md
       content: "Cheers to the BHP team"
     register: initialize
 
   - name: Update hosts file
-    win_lineinfile:
+    community.windows.win_lineinfile:
       path: C:\Windows\System32\Drivers\etc\hosts
       line: 8.8.8.8         bhp.microsoft.com   "#Azure DNS"
 
   - name: Change power plan to high performance
-    win_power_plan:
+    community.windows.win_power_plan:
       name: high performance
 
   - name: Disable firewall for Public and Private profiles
-    win_firewall:
+    community.windows.win_firewall:
       state: disabled
       profiles:
       - Private
@@ -142,7 +142,7 @@
   #     type: dword
 
   - name: Disable Server Management at Startup
-    win_regedit:
+    ansible.windows.win_regedit:
       path: HKCU:\Software\Microsoft\ServerManager\
       name: DoNotOpenServerManagerAtLogon
       data: 1
@@ -158,7 +158,7 @@
   #       - Administrators
 
   - name: Create user account and add to Administrators group
-    win_user:
+    ansible.windows.win_user:
       name: BHPadmin
       password: Ans1bl3--
       state: present
