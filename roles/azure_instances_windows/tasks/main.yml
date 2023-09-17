@@ -72,7 +72,7 @@
   # - "{{ windows2_jobs.results }}"
 
 - name: Windows create VM Extension
-  azure.azcollection.azure_rm_virtualmachine_extension:
+  azure.azcollection.azure_rm_virtualmachineextension:
     resource_group: "{{ azure_resource_group }}"    
     name: custom-script
     virtual_machine_name: "{{ item.invocation.module_args.name }}"
