@@ -1,5 +1,5 @@
 ---
-- name: Create resources and instances in Azure
+- name: Update instances in Azure
   hosts: all
   connection: local
   become: false
