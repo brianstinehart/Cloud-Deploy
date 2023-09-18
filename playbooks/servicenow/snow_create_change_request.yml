@@ -35,3 +35,10 @@
     - name: Print Message
       debug:
         var: new_chg_request.record.number
+
+    - name: Wait for Change Request approval
+      servicenow.itsm.change_request_info:
+        number: "{{ chg_number }}"
+      until: change_request_status.records[0].state == "scheduled"
+      retries: 100
+      delay: 10
