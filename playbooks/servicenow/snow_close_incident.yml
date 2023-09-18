@@ -35,3 +35,4 @@
         number: "{{ inc_number }}"
         other:
           work_notes: "This incident has been closed by Ansible Automation Platform"
+          close_code: "Resolved by change"
