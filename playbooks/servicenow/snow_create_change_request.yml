@@ -59,5 +59,9 @@
 
     - name: Update the change request to review in ServiceNow
       servicenow.itsm.change_request:
+        instance:
+          host: "{{ snow_instance }}"
+          username: "{{ snow_username }}"
+          password: "{{ snow_password }}"
         state: review
         number: "{{ chg_number }}"
