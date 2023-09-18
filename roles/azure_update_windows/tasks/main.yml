@@ -2,5 +2,6 @@
 - name: Windows Update Check
   ansible.windows.win_updates:
     state: searched
+    category_names: '*'
     # category_names:
     #   - CriticalUpdates
