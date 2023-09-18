@@ -48,10 +48,14 @@
 
     - name: Wait for Change Request approval
       servicenow.itsm.change_request_info:
+        instance:
+          host: "{{ snow_instance }}"
+          username: "{{ snow_username }}"
+          password: "{{ snow_password }}"
         number: "{{ chg_number }}"
-      # until: change_request_status.records[0].state == "implement"
-      # retries: 100
-      # delay: 10
+      until: change_request_status.records[0].state == "implement"
+      retries: 100
+      delay: 10
 
     - name: Update the change request to review in ServiceNow
       servicenow.itsm.change_request:
