@@ -20,7 +20,7 @@
     #       work_notes: "This incident has been closed by Ansible"
     #   register: new_incident
 
-    - name: Close change request
+    - name: Close Incident
       servicenow.itsm.incident:
         instance:
           host: "{{ snow_instance }}"
@@ -29,7 +29,7 @@
 
         state: closed
         # requested_by: some.user
-        close_code: "Resolved by change"
+        close_code: "Closed/Resolved by Caller"
         close_notes: "{{ close_notes }}"
         # assignment_group: "Software"
         number: "{{ inc_number }}"
