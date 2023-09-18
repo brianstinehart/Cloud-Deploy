@@ -1,6 +1,6 @@
 ---
-- name: Windows Update
+- name: Windows Update Check
   ansible.windows.win_updates:
-    reboot: true
-    category_names:
-      - CriticalUpdates
+    state: searched
+    # category_names:
+    #   - CriticalUpdates
