@@ -3,5 +3,4 @@
   ansible.windows.win_updates:
     state: searched
     category_names: '*'
-    # category_names:
-    #   - CriticalUpdates
+  register: win_update_result
