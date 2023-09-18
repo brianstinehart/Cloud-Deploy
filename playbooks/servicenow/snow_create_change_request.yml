@@ -14,7 +14,7 @@
           password: "{{ snow_password }}"
 
         type: "{{ chg_type }}"
-        state: new
+        state: authorize
         # requested_by: some.user
         short_description: "{{ short_description }}"
         description: "{{ description }}"
