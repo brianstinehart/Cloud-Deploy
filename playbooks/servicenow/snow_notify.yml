@@ -26,8 +26,8 @@
           password: "{{ snow_password }}"
 
         resource: sc_request
-        action: patch
-        other:
+        action: post
+        data:
           work_notes: "{{ snow_note }}"
           number: "{{ snow_request }}"
       register: snow_var
