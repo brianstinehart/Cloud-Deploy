@@ -27,7 +27,6 @@
 
         resource: sc_request
         state: present
-        short_description: "{{ short_description }}"
         other:
           work_notes: "{{ snow_note }}"
           number: "{{ snow_request }}"
