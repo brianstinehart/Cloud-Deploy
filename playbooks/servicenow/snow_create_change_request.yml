@@ -36,9 +36,20 @@
       debug:
         var: new_chg_request.record.number
 
+    - name: Post URL to Slack channel
+      community.general.slack:
+        token: "T0508SWKB2N/B04V8C4P6A3/fr3b7rtyxJrZgjuRqQ1UCT1d"
+        channel: "#devops"
+        msg: "{{ assigned_to }} has a new change request approval to action. Please click on this URL to approve: {{ snow_instance }}/nav_to.do?uri=change_request.do?sysparm_query=number={{ chg_number }}"
+
     - name: Wait for Change Request approval
       servicenow.itsm.change_request_info:
         number: "{{ chg_number }}"
-      until: change_request_status.records[0].state == "scheduled"
+      until: change_request_status.records[0].state == "implement"
       retries: 100
       delay: 10
+
+    - name: Update to implement the change request in ServiceNow
+      servicenow.itsm.change_request:
+        state: review
+        number: "{{ chg_number }}"
