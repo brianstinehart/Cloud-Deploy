@@ -10,7 +10,7 @@
         channel: "#devops"
         msg: "{{ message }}"
 
-    - name: Post message to Slack channel
+    - name: Post URL to Slack channel
       community.general.slack:
         token: "T0508SWKB2N/B04V8C4P6A3/fr3b7rtyxJrZgjuRqQ1UCT1d"
         channel: "#devops"
