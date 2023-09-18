@@ -53,9 +53,10 @@
           username: "{{ snow_username }}"
           password: "{{ snow_password }}"
         number: "{{ chg_number }}"
-      until: records.state == "implement"
+      until: change_request_status.records[0].state == "implement"
       retries: 100
       delay: 10
+      register: change_request_status
 
     - name: Update the change request to review in ServiceNow
       servicenow.itsm.change_request:
