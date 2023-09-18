@@ -27,13 +27,17 @@
           assigned_to: "{{ assigned_to }}"
       register: new_chg_request
 
+    - name: Set resource facts
+      ansible.builtin.set_fact:
+        chg_number: "{{ new_chg_request.record.number }}"
+    
     - name: set stats
-      set_stats:
+      ansible.builtin.set_stats:
         data:
           chg_number: "{{ new_chg_request.record.number }}"
 
     - name: Print Message
-      debug:
+      ansible.builtin.debug:
         var: new_chg_request.record.number
 
     - name: Post URL to Slack channel
