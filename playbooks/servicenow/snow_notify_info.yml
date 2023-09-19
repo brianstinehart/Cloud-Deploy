@@ -1,0 +1,12 @@
+---
+- name: ServiceNow Gather Catalog Request Info
+  hosts: localhost
+  connection: local
+  gather_facts: no
+  
+  tasks:
+
+    - name: Retrieve all records from catalog requests
+      servicenow.itsm.api_info:
+        resource: incident
+      register: result
