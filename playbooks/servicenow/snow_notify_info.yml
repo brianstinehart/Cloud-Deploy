@@ -17,4 +17,4 @@
 
     - name: Print most recent record
       debug:
-        msg: "First item: {{ record[0] }}"
+        msg: "First item: {{ catalog_requests.record[0] }}"
