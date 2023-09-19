@@ -1,5 +1,5 @@
 ---
-- name: Update instances in Azure
+- name: Update Windows instances in Azure
   hosts: all
   connection: local
   become: false

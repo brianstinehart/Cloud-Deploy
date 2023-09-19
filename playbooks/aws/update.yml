@@ -1,5 +1,5 @@
 ---
-- name: Check for Windows updates on instances in Azure
+- name: Create resources and instances in AWS
   hosts: all
   connection: local
   become: false
@@ -7,8 +7,8 @@
   tasks:
   
     - name: Include default variables for provisioning
-      ansible.builtin.include_vars: ../../vars/azure.yml
+      ansible.builtin.include_vars: ../../vars/aws_rhel.yml
 
     ## Instance creation
     - ansible.builtin.include_role:
-        name: ../../roles/azure_update_check_windows
+        name: ../../roles/aws_update_rhel
