@@ -8,5 +8,9 @@
 
     - name: Retrieve all records from catalog requests
       servicenow.itsm.api_info:
-        resource: incident
+        instance:
+          host: "{{ snow_instance }}"
+          username: "{{ snow_username }}"
+          password: "{{ snow_password }}"
+        resource: sc_request
       register: result
