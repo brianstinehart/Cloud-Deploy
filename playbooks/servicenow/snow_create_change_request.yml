@@ -46,23 +46,23 @@
         channel: "#devops"
         msg: "{{ assigned_to }} has a new change request approval to action. Please click on this URL to approve: {{ snow_instance }}/nav_to.do?uri=change_request.do?sysparm_query=number={{ chg_number }}"
 
-    - name: Wait for Change Request approval
-      servicenow.itsm.change_request_info:
-        instance:
-          host: "{{ snow_instance }}"
-          username: "{{ snow_username }}"
-          password: "{{ snow_password }}"
-        number: "{{ chg_number }}"
-      until: change_request_status.records[0].state == "implement"
-      retries: 100
-      delay: 10
-      register: change_request_status
+    # - name: Wait for Change Request approval
+    #   servicenow.itsm.change_request_info:
+    #     instance:
+    #       host: "{{ snow_instance }}"
+    #       username: "{{ snow_username }}"
+    #       password: "{{ snow_password }}"
+    #     number: "{{ chg_number }}"
+    #   until: change_request_status.records[0].state == "implement"
+    #   retries: 100
+    #   delay: 10
+    #   register: change_request_status
 
-    - name: Update the change request to review in ServiceNow
-      servicenow.itsm.change_request:
-        instance:
-          host: "{{ snow_instance }}"
-          username: "{{ snow_username }}"
-          password: "{{ snow_password }}"
-        state: review
-        number: "{{ chg_number }}"
+    # - name: Update the change request to review in ServiceNow
+    #   servicenow.itsm.change_request:
+    #     instance:
+    #       host: "{{ snow_instance }}"
+    #       username: "{{ snow_username }}"
+    #       password: "{{ snow_password }}"
+    #     state: review
+    #     number: "{{ chg_number }}"
