@@ -13,4 +13,7 @@
           username: "{{ snow_username }}"
           password: "{{ snow_password }}"
         resource: sc_request
-      register: result
+      register: catalog_requests
+
+    - debug:
+      msg: "First item: {{ record[0] }}"
