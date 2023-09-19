@@ -15,5 +15,6 @@
         resource: sc_request
       register: catalog_requests
 
-    - debug:
-      msg: "First item: {{ record[0] }}"
+    - name: Print most recent record
+      debug:
+        msg: "First item: {{ record[0] }}"
