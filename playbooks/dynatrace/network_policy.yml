@@ -5,7 +5,7 @@
   
   tasks:
     - name: Login to OpenShift cluster
-      ansible.builtin.command: oc login --token={{ bearer_token }} --server={{ host }}
+      ansible.builtin.command: oc login --token={{ K8S_AUTH_API_KEY }} --server={{ K8S_AUTH_HOST }}
 
     - name: Change file ownership, group and permissions
       ansible.builtin.file:
