@@ -27,7 +27,7 @@
 
         resource: sc_request
         action: patch
+        sys_id: "{{ sys_id }}"
         data:
           work_notes: "{{ snow_note }}"
-          number: "{{ snow_request }}"
       register: snow_var
