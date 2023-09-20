@@ -5,7 +5,7 @@
   
   tasks:
     - name: Login to OpenShift cluster
-      ansible.builtin.command: oc login --token=sha256~p37Ihycyj1B-7AsrtsFHBJAHzLNbHSj5MQtd1JE4eMY --server=https://api.cluster-44q6t.44q6t.sandbox279.opentlc.com:6443
+      ansible.builtin.command: oc login --token={{ bearer_token }} --server={{ host }}
 
     - name: Change file ownership, group and permissions
       ansible.builtin.file:
@@ -22,7 +22,7 @@
             name: block-all-traffic-policy
             namespace: devops
           spec:
-            podSelector: 
+            podSelector: s
               matchLabels:
                 app: log4shell-app
             policyTypes:
