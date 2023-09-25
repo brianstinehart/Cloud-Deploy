@@ -3,32 +3,35 @@
   ansible.windows.win_updates:
     state: searched
     category_names: '*'
-  register: win_update_result
+  register: available_updates
 
-- name: Print Message
+- name: Print Update Output to Screen
   debug:
-    msg: "{{ win_update_result.update.title }}"
+    msg: "{{ inventory_hostname }} has {{ available_updates.found_update_count }} updates available. 
+        {% for key, value in available_updates.updates.iteritems() %}
+      - KB: {{ value.title }}
+        {% endfor %}"
 
-- name: Print Message
-  debug:
-    var: win_update_result.update.title
+# - name: Print Message
+#   debug:
+#     var: win_update_result.update.title
 
-- name: Set client secret and ID variables
-  set_fact:
-    win_updates: "{{ win_update_result.update.title }}"
+# - name: Set client secret and ID variables
+#   set_fact:
+#     win_updates: "{{ win_update_result.update.title }}"
 
-- name: Update ServiceNow ticket to indicate start
-  servicenow.itsm.api:
-    instance:
-      host: "{{ snow_instance }}"
-      username: "{{ snow_username }}"
-      password: "{{ snow_password }}"
+# - name: Update ServiceNow ticket to indicate start
+#   servicenow.itsm.api:
+#     instance:
+#       host: "{{ snow_instance }}"
+#       username: "{{ snow_username }}"
+#       password: "{{ snow_password }}"
 
-    resource: sc_request
-    action: patch
-    sys_id: "{{ sys_id }}"
-    data:
-      work_notes: "The current required updates on {{ ansible_host }} are: 
+#     resource: sc_request
+#     action: patch
+#     sys_id: "{{ sys_id }}"
+#     data:
+#       work_notes: "The current required updates on {{ ansible_host }} are: 
         
-        {{ win_updates }}"
-  register: snow_var
+#         {{ win_updates }}"
+#   register: snow_var
