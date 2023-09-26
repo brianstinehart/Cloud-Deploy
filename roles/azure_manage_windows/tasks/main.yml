@@ -183,8 +183,10 @@
 - name: Update ServiceNow Ticket Work Notes 
   ansible.builtin.set_stats:
     data:
-      snow_note: "Machine configuration complete. 
-                  
-                  Chocolatey installed for software management
-                  User account {{ name_prefix }}admin created and added to Administrator group - password emailed separately.
-                  IIS installed and webserver available at: http://{{ ansible_host }}/index.html"
+      snow_note: "Machine configuration complete.
+                
+                Chocolatey installed for software management
+                
+                User account {{ name_prefix }}admin created and added to Administrator group - password emailed separately.
+                
+                IIS installed and webserver available at: http://{{ ansible_host }}/index.html"
