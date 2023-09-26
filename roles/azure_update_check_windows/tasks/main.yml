@@ -13,19 +13,10 @@
       - KB: {{ value.title }}
       {% endfor %}
 
-- name: Update ServiceNow ticket to indicate start
-  servicenow.itsm.api:
-    instance:
-      host: "{{ snow_instance }}"
-      username: "{{ snow_username }}"
-      password: "{{ snow_password }}"
-
-    resource: sc_request
-    action: patch
-    sys_id: "{{ sys_id }}"
+- name: Update ServiceNow Ticket Work Notes 
+  ansible.builtin.set_stats:
     data:
-      work_notes:  |
-        {{ inventory_hostname }} has {{ available_updates.found_update_count }} updates available.
+      description: "{{ inventory_hostname }} has {{ available_updates.found_update_count }} updates available.
         {% for key, value in available_updates.updates.items() %}
         - KB: {{ value.title }}
-        {% endfor %}
+        {% endfor %}"
