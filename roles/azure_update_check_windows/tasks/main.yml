@@ -10,7 +10,7 @@
     msg: |
       - {{ inventory_hostname }} has {{ available_updates.found_update_count }} updates available.
       {% for key, value in available_updates.updates.items() %}
-      - KB: {{ value.title.stdout_lines }}
+      - KB: {{ value.title }}
       {% endfor %}
 
 - name: Print Update Output to Screen
