@@ -8,7 +8,7 @@
 - name: Print Update Output to Screen
   debug:
     msg: |
-      {{ inventory_hostname }} has {{ available_updates.found_update_count }} updates available.
+      - {{ inventory_hostname }} has {{ available_updates.found_update_count }} updates available.
       {% for key, value in available_updates.updates.items() %}
       - KB: {{ value.title }}
       {% endfor %}
