@@ -165,24 +165,30 @@
       groups:
         - Administrators
 
-#   - name: Remove EC2 Feedback Icon
-#     win_file:
-#       path: C:\Users\{{ user }}\Desktop\EC2 Feedback.website
-#       state: absent
+- name: Install IIS (Web-Server only)
+  ansible.windows.win_feature:
+    name: Web-Server
+    include_sub_features: true
+  register: win_iis
 
-#   - name: Remove EC2 Website Icon
-#     win_file:
-#       path: C:\Users\{{ user }}\Desktop\EC2 Microsoft Windows Guide.website
-#       state: absent
+- name: Reboot if installing IIS feature requires it
+  ansible.windows.win_reboot:
+  when: win_iis.reboot_required
 
-#   become: yes
-#   become_user: "{{ dns_domain_name_short }}\\{{ user }}"
-#   become_method: runas
+- name: Create Website Content
+  ansible.windows.win_template:
+    src: iis_standard.j2
+    dest: "C:\\inetpub\\wwwroot\\index.html"
 
-# - include_tasks: myrtille.yml
+- name: Update ServiceNow ticket to indicate instance creation
+  servicenow.itsm.api:
+    instance:
+      host: "{{ snow_instance }}"
+      username: "{{ snow_username }}"
+      password: "{{ snow_password }}"
 
-# - include_tasks: git_lab.yml
-#   when: git_lab | bool
-
-# - include_tasks: adv_lab.yml
-#   when: advanced_lab | bool
+    resource: sc_request
+    action: patch
+    sys_id: "{{ sys_id }}"
+    data:
+      work_notes: "Machine configuration complete. Chocolatey installed"
