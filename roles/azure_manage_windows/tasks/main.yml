@@ -165,7 +165,7 @@
       groups:
         - Administrators
 
-- name: Install IIS (Web-Server only)
+- name: Install IIS (Web-Server only) with subfeatures
   ansible.windows.win_feature:
     name: Web-Server
     include_sub_features: true
@@ -194,7 +194,5 @@
       work_notes: "Machine configuration complete. 
                   
                   Chocolatey installed for software management
-                  
                   User account {{ name_prefix }}admin created and added to Administrator group - password emailed separately.
-                  
                   IIS installed and webserver available at: http://{{ ansible_host }}/index.html"
