@@ -1,0 +1,23 @@
+---
+- set_fact:
+    user: bstineha
+
+- name: Install IIS (Web-Server only) with subfeatures
+  ansible.windows.win_feature:
+    name: Web-Server
+    include_sub_features: true
+  register: win_iis
+
+- name: Reboot if installing IIS feature requires it
+  ansible.windows.win_reboot:
+  when: win_iis.reboot_required
+
+- name: Create Website Content
+  ansible.windows.win_template:
+    src: iis_standard.j2
+    dest: "C:\\inetpub\\wwwroot\\index.html"
+
+- name: Update ServiceNow Ticket Work Notes 
+  ansible.builtin.set_stats:
+    data:
+      snow_note: "IIS installed and webserver available at: http://{{ ansible_host }}/index.html"
