@@ -55,19 +55,19 @@
 
   - name: Create directory
     ansible.windows.win_file:
-      path: C:\Users\{{ user }}\Documents\Interactive
+      path: C:\Users\{{ user }}\Documents\{{ name_prefix }}
       state: directory
 
   - name: Create Readme file
     ansible.windows.win_copy:
-      dest: C:\Users\{{ user }}\Documents\Interactive\README.md
-      content: "Cheers to the BHP team"
+      dest: C:\Users\{{ user }}\Documents\{{ name_prefix }}\README.md
+      content: "Cheers to the Aus Super team"
     register: initialize
 
   - name: Update hosts file
     community.windows.win_lineinfile:
       path: C:\Windows\System32\Drivers\etc\hosts
-      line: 8.8.8.8         bhp.microsoft.com   "#Azure DNS"
+      line: 8.8.8.8         {{ name_prefix }}.microsoft.com   "#Azure DNS"
 
   - name: Change power plan to high performance
     community.windows.win_power_plan:
@@ -159,7 +159,7 @@
 
   - name: Create user account and add to Administrators group
     ansible.windows.win_user:
-      name: BHPadmin
+      name: "{{ name_prefix }}admin"
       password: Ans1bl3--
       state: present
       groups:
