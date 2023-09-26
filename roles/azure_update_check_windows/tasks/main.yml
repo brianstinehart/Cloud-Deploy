@@ -12,7 +12,11 @@
       {% for key, value in available_updates.updates.items() %}
       - KB: {{ value.title }}
       {% endfor %}
+    register: result
 
+- name: Print Update Output to Screen
+  debug:
+    msg: "{{ result.stdout_lines }}"
 
 # - name: Print Message
 #   debug:
