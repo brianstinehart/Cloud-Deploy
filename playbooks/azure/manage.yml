@@ -12,27 +12,3 @@
     ## Instance creation
     - ansible.builtin.include_role:
         name: ../../roles/azure_manage_windows
-
-- name: Update ServiceNow ticket
-  hosts: localhost
-  connection: local
-  become: false
-  gather_facts: false
-  tasks:
-
-    - name: Update ServiceNow ticket to indicate instance configuration management details
-      servicenow.itsm.api:
-        instance:
-          host: "{{ snow_instance }}"
-          username: "{{ snow_username }}"
-          password: "{{ snow_password }}"
-
-        resource: sc_request
-        action: patch
-        sys_id: "{{ sys_id }}"
-        data:
-          work_notes: "Machine configuration complete. 
-                      
-                      Chocolatey installed for software management
-                      User account {{ name_prefix }}admin created and added to Administrator group - password emailed separately.
-                      IIS installed and webserver available at: http://{{ ansible_host }}/index.html"
