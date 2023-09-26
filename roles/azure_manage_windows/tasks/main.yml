@@ -181,7 +181,7 @@
     dest: "C:\\inetpub\\wwwroot\\index.html"
 
 - name: Update ServiceNow Ticket Work Notes 
-  set_stats:
+  ansible.builtin.set_stats:
     data:
       snow_note: "Machine configuration complete. 
                   
