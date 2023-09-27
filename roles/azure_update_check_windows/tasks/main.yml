@@ -13,10 +13,18 @@
       - KB: {{ value.title }}
       {% endfor %}
 
-- name: Update ServiceNow Ticket Work Notes 
+- name: Update ServiceNow Change Request Description
   ansible.builtin.set_stats:
     data:
       description: "{{ inventory_hostname }} has {{ available_updates.found_update_count }} updates available.
+        {% for key, value in available_updates.updates.items() %}
+        - KB: {{ value.title }}
+        {% endfor %}"
+
+- name: Update ServiceNow Ticket Work Notes 
+  ansible.builtin.set_stats:
+    data:
+      snow_note: "{{ inventory_hostname }} has {{ available_updates.found_update_count }} updates available.
         {% for key, value in available_updates.updates.items() %}
         - KB: {{ value.title }}
         {% endfor %}"
