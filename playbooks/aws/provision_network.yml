@@ -5,7 +5,7 @@
   become: false
   gather_facts: false
   vars:
-    workshop_type: rhel
+    workshop_type: network
   
   tasks:
   
@@ -22,7 +22,11 @@
     
     ## build network elements, security groups and key pair
     - ansible.builtin.include_role:
-        name: ../../roles/aws_resources
+        name: ../../roles/aws_resources    
+    
+    ## Duplicates the above for network using 2 VPCs
+    - ansible.builtin.include_role:
+        name: ../../roles/aws_resources_network
 
     ## find AMI dynamically
     - ansible.builtin.include_role:
@@ -31,3 +35,7 @@
     ## Instance creation
     - ansible.builtin.include_role:
         name: ../../roles/aws_instances_{{ workshop_type }}
+
+    ## Configure network device setup
+    # - name: Include workshop_type unique setup roles
+    #   ansible.builtin.import_playbook: "{{ playbook_dir }}/workshop_specific/{{ workshop_type }}.yml"
