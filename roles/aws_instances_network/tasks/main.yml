@@ -58,7 +58,7 @@
     resource: "{{ item.1.instance_id }}"
     state: present
     tags:
-      Name: "{{ ec2_name_prefix }}-{{ rtr1_type }}-rtr1"
+      Name: "{{ rtr1_type }}-rtr1"
       Index: "{{ item[0] }}"
       Student: "student{{ item.0 + 1 }}"
       launch_time: "{{ item.1.launch_time }}"
@@ -117,7 +117,7 @@
     resource: "{{ item.1.instance_id }}"
     state: present
     tags:
-      Name: "{{ ec2_name_prefix }}-{{ rtr2_type }}-rtr2"
+      Name: "{{ rtr2_type }}-rtr2"
       Index: "{{ item[0] }}"
       Student: "student{{ item.0 + 1 }}"
       launch_time: "{{ item.1.launch_time }}"
@@ -176,7 +176,7 @@
     resource: "{{ item.1.instance_id }}"
     state: present
     tags:
-      Name: "{{ ec2_name_prefix }}-{{ rtr3_type }}-rtr3"
+      Name: "{{ rtr3_type }}-rtr3"
       Index: "{{ item[0] }}"
       Student: "student{{ item.0 + 1 }}"
       launch_time: "{{ item.1.launch_time }}"
@@ -235,7 +235,7 @@
     resource: "{{ item.1.instance_id }}"
     state: present
     tags:
-      Name: "{{ ec2_name_prefix }}-{{ rtr4_type }}-rtr4"
+      Name: "{{ rtr4_type }}-rtr4"
       Index: "{{ item[0] }}"
       Student: "student{{ item.0 + 1 }}"
       launch_time: "{{ item.1.launch_time }}"
