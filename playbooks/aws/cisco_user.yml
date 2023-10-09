@@ -1,0 +1,12 @@
+---
+- name: Bounce port 
+  hosts: all
+  gather_facts: false
+  tasks:
+    
+    - name: Add or update user privileges
+      cisco.ios.ios_user:
+        name: test
+        configured_password: ansible
+        password_type: password
+        privilege: "{{ privilege }}"
