@@ -2,11 +2,19 @@
 - name: Bounce port 
   hosts: all
   gather_facts: false
+  vars:
+    workshop_type: network 
+    user_account: test 
   tasks:
     
     - name: Add or update user privileges
       cisco.ios.ios_user:
-        name: test
+        name: "{{ user_account }}"
         configured_password: ansible
         password_type: password
         privilege: "{{ privilege }}"
+
+    - name: set stats
+      ansible.builtin.set_stats:
+        data:
+          snow_note: "User account ->{{ user_account }}<- privilege level updated to ->{{ privilege }}<-"
