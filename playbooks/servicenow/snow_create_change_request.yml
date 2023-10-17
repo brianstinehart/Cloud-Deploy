@@ -34,6 +34,11 @@
     - name: set stats
       ansible.builtin.set_stats:
         data:
+          assigned_to: "{{ assigned_to }}"    
+    
+    - name: set stats
+      ansible.builtin.set_stats:
+        data:
           chg_number: "{{ new_chg_request.record.number }}"
 
     - name: Print Message
