@@ -1,0 +1,29 @@
+---
+- name: ServiceNow Notification
+  hosts: localhost
+  connection: local
+  gather_facts: no
+  vars:
+    snow_note: "{{ assigned_to }} has a new change request approval to action. Please click on this URL to approve: {{ snow_instance }}/nav_to.do?uri=change_request.do?sysparm_query=number={{ chg_number }}"
+
+  tasks:
+
+    - name: Update ServiceNow ticket to indicate start
+      servicenow.itsm.api:
+        instance:
+          host: "{{ snow_instance }}"
+          username: "{{ snow_username }}"
+          password: "{{ snow_password }}"
+
+        resource: sc_request
+        action: patch
+        sys_id: "{{ sys_id }}"
+        data:
+          work_notes: "{{ snow_note }}"
+      register: snow_var
+
+    - name: Post URL to Slack channel
+      community.general.slack:
+        token: "T0508SWKB2N/B04V8C4P6A3/fr3b7rtyxJrZgjuRqQ1UCT1d"
+        channel: "#devops"
+        msg: "{{ assigned_to }} has a new change request approval to action. Please click on this URL to approve: {{ snow_instance }}/nav_to.do?uri=change_request.do?sysparm_query=number={{ chg_number }}"
