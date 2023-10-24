@@ -1,0 +1,5 @@
+---
+- name: RHEL 8 NIST-CUI 800-171, Section 2.2
+  hosts: all
+  roles:
+     - { role: RedHatOfficial.rhel8_cui }
