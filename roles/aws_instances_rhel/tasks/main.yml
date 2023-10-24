@@ -71,7 +71,7 @@
     resource: "{{ item.1.instance_id }}"
     state: present
     tags:
-      Name: "{{ ec2_name_prefix }}-student{{ item.0 + 1 }}-node1"
+      Name: "{{ ec2_name_prefix }}-node{{ item.0 + 1 }}"
       Index: "{{ item[0] }}"
       Student: "student{{ item.0 + 1 }}"
       launch_time: "{{ item.1.launch_time }}"
