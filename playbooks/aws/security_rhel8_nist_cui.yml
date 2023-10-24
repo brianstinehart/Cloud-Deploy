@@ -6,7 +6,7 @@
   tasks:
   
     - name: Include default variables
-      ansible.builtin.include_vars: ../../vars/aws_rhel.yml
+      ansible.builtin.include_vars: ../../vars/aws.yml
 
     ## Instance hardening
     - ansible.builtin.include_role:
