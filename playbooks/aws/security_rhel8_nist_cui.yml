@@ -1,5 +1,13 @@
 ---
 - name: RHEL 8 NIST-CUI 800-171, Section 2.2
   hosts: all
-  roles:
-     - { role: RedHatOfficial.rhel8_cui }
+  become: false
+  gather_facts: false
+  tasks:
+  
+    - name: Include default variables
+      ansible.builtin.include_vars: ../../vars/aws_rhel.yml
+
+    ## Instance hardening
+    - ansible.builtin.include_role:
+        name: ../../roles/aws-rhel8-nist-cui

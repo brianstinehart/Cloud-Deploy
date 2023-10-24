@@ -1,14 +1,13 @@
 ---
 - name: Create resources and instances in AWS
   hosts: all
-  connection: local
   become: false
   gather_facts: false
   tasks:
   
-    - name: Include default variables for provisioning
+    - name: Include default variables
       ansible.builtin.include_vars: ../../vars/aws_rhel.yml
 
-    ## Instance creation
+    ## Instance update
     - ansible.builtin.include_role:
         name: ../../roles/aws_update_rhel
