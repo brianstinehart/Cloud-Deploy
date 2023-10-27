@@ -1,10 +1,10 @@
 ---
-- name: Using user_principal_name
+- name: User lookup using objectId
   azure.azcollection.azure_rm_aduser_info:
     object_id: 0a541545-1df3-43fa-b3bc-c097d73cd77c
     tenant: 1ce7852f-dcf3-42bc-afe6-3bf81ab984fb
   register: user_data
 
-# - name: Print Update Output to Screen
-#   debug:
-#     msg: 
+- name: Print Update Output to Screen
+  debug:
+    msg: "{{ user_data }}"
