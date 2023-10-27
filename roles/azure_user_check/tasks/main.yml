@@ -1,7 +1,7 @@
 ---
 - name: Using user_principal_name
   azure.azcollection.azure_rm_aduser_info:
-    object_id: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+    object_id: 0a541545-1df3-43fa-b3bc-c097d73cd77c
   register: user_data
 
 # - name: Print Update Output to Screen
