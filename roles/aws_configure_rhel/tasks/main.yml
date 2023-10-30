@@ -35,7 +35,7 @@
   ansible.builtin.service:
     name: NetworkManager
     state: restarted
-  when: dnschange.changed or ifcfg.changed
+  when: dnschange.changed
 
 - name: Add EPEL repo for RHEL 7
   ansible.builtin.yum_repository:
