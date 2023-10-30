@@ -10,4 +10,4 @@
 
     ## Instance hardening
     - ansible.builtin.include_role:
-        name: ../../roles/aws-rhel8-nist-cui
+        name: ../../roles/aws_configure_rhel

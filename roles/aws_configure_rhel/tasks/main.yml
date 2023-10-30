@@ -1,6 +1,6 @@
 ---
 - name: Install packages
-  package:
+  ansible.builtin.package:
     name: "{{ item }}"
     state: present
   with_items:
@@ -10,12 +10,12 @@
     - httpd
 
 - name: Start Apache service
-  service:
+  ansible.builtin.service:
     name: httpd
     state: started
 
 - name: create dhclient.conf
-  file:
+  ansible.builtin.file:
     path: /etc/dhcp/dhclient.conf
     state: touch
     owner: root
@@ -23,7 +23,7 @@
     mode: '0644'
 
 - name: set custom DNS server
-  blockinfile:
+  ansible.builtin.blockinfile:
     dest: /etc/dhcp/dhclient.conf
     block: |
       prepend domain-name-servers 8.8.8.8;
@@ -32,13 +32,13 @@
   register: dnschange
 
 - name: restart NetworkManager
-  service:
+  ansible.builtin.service:
     name: NetworkManager
     state: restarted
   when: dnschange.changed or ifcfg.changed
 
 - name: Add EPEL repo for RHEL 7
-  yum_repository:
+  ansible.builtin.yum_repository:
     name: epel
     description: EPEL for Enterprise Linux 7
     baseurl: https://dl.fedoraproject.org/pub/epel/7/x86_64/
@@ -47,7 +47,7 @@
   when: ansible_distribution_major_version|int == 7
 
 - name: Add EPEL repo for RHEL 8
-  yum_repository:
+  ansible.builtin.yum_repository:
     name: epel
     description: EPEL for Enterprise Linux 8
     baseurl: https://dl.fedoraproject.org/pub/epel/8/Everything/x86_64/
@@ -56,34 +56,34 @@
   when: ansible_distribution_major_version|int == 8
 
 - name: Enable optional repos for RHEL 7 (ec2)
-  command: yum-config-manager --enable rhui-REGION-rhel-server-extras rhui-REGION-rhel-server-optional
+  ansible.builtin.command: yum-config-manager --enable rhui-REGION-rhel-server-extras rhui-REGION-rhel-server-optional
   when:
     - ansible_distribution == 'RedHat'
     - ansible_distribution_major_version|int == 7
     - instance_loc == 'ec2'
 
 - name: Enable appstream repo for RHEL 8 (non-ec2)
-  command: yum-config-manager --enable rhel-8-for-x86_64-appstream-rpms
+  ansible.builtin.command: yum-config-manager --enable rhel-8-for-x86_64-appstream-rpms
   when:
     - ansible_distribution == 'RedHat'
     - ansible_distribution_major_version|int == 8
     - instance_loc != 'ec2'
 
 - name: Install packages - vim & bind-utils
-  package:
+  ansible.builtin.package:
     name:
       - vim
       - bind-utils
     state: present
 
 - name: Create user and add to admin group
-  user:
-    name: EAadmin
+  ansible.builtin.user:
+    name: "{{ ec2_name_prefix }}admin"
     comment: Sudo user
     password: $6$MDZERLPryot60GAz$pcUtETE2UsVZxFL3s0qdKOHLi7nU38cpcNtFsqbGGmp5TW1uz/Z4S/MRECa1qTZgXxjuWy49IbBkjqA/VMtMR0
     group: adm
 
 - name: Give user sudo privileges
-  user:
-    name: EAadmin
+  ansible.builtin.user:
+    name: "{{ ec2_name_prefix }}admin"
     group: wheel
