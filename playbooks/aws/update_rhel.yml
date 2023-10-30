@@ -1,5 +1,5 @@
 ---
-- name: Update RHEL
+- name:  RHEL Update
   hosts: all
   become: false
   gather_facts: false
