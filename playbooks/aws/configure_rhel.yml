@@ -1,13 +1,13 @@
 ---
-- name: Update RHEL
+- name: RHEL 8 NIST-CUI 800-171, Section 2.2
   hosts: all
-  become: false
-  gather_facts: false
+  become: true
+  gather_facts: true
   tasks:
   
     - name: Include default variables
       ansible.builtin.include_vars: ../../vars/aws.yml
 
-    ## Instance update
+    ## Instance hardening
     - ansible.builtin.include_role:
-        name: ../../roles/aws_update_rhel
+        name: ../../roles/aws-rhel8-nist-cui
