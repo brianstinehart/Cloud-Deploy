@@ -60,14 +60,12 @@
   when:
     - ansible_distribution == 'RedHat'
     - ansible_distribution_major_version|int == 7
-    - instance_loc == 'ec2'
 
 - name: Enable appstream repo for RHEL 8 (non-ec2)
   ansible.builtin.command: yum-config-manager --enable rhel-8-for-x86_64-appstream-rpms
   when:
     - ansible_distribution == 'RedHat'
     - ansible_distribution_major_version|int == 8
-    - instance_loc != 'ec2'
 
 - name: Install packages - vim & bind-utils
   ansible.builtin.package:
