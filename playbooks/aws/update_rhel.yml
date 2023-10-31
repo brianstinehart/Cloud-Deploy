@@ -1,8 +1,8 @@
 ---
 - name:  RHEL Update
   hosts: all
-  become: false
-  gather_facts: false
+  become: true
+  gather_facts: true
   tasks:
   
     - name: Include default variables
