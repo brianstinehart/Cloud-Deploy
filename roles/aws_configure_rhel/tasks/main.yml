@@ -73,6 +73,7 @@
     name: "{{ ec2_name_prefix }}admin"
     comment: Sudo user
     password: $6$MDZERLPryot60GAz$pcUtETE2UsVZxFL3s0qdKOHLi7nU38cpcNtFsqbGGmp5TW1uz/Z4S/MRECa1qTZgXxjuWy49IbBkjqA/VMtMR0
+    update_password: on_create
     group: adm
 
 - name: Give user sudo privileges
