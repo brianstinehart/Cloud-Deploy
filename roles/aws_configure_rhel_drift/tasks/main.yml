@@ -1,0 +1,82 @@
+---
+- name: Install packages
+  ansible.builtin.package:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - NetworkManager
+    - chrony
+    - sysstat
+    - httpd
+
+- name: Start Apache service
+  ansible.builtin.service:
+    name: httpd
+    state: started
+
+# - name: create dhclient.conf
+#   ansible.builtin.file:
+#     path: /etc/dhcp/dhclient.conf
+#     state: touch
+#     owner: root
+#     group: root
+#     mode: '0644'
+
+- name: set custom DNS server
+  ansible.builtin.blockinfile:
+    dest: /etc/dhcp/dhclient.conf
+    block: |
+      prepend domain-name-servers 8.8.8.8;
+      prepend domain-search "{{ dns_domain_name }}", "ec2.internal";
+    state: present
+  register: dnschange
+
+- name: restart NetworkManager
+  ansible.builtin.service:
+    name: NetworkManager
+    state: restarted
+  when: dnschange.changed
+
+- name: Add EPEL repo for RHEL 7
+  ansible.builtin.yum_repository:
+    name: epel
+    description: EPEL for Enterprise Linux 7
+    baseurl: https://dl.fedoraproject.org/pub/epel/7/x86_64/
+    enabled: yes
+    gpgcheck: no
+  when: ansible_distribution_major_version|int == 7
+
+- name: Add EPEL repo for RHEL 8
+  ansible.builtin.yum_repository:
+    name: epel
+    description: EPEL for Enterprise Linux 8
+    baseurl: https://dl.fedoraproject.org/pub/epel/8/Everything/x86_64/
+    enabled: yes
+    gpgcheck: no
+  when: ansible_distribution_major_version|int == 8
+
+- name: Enable optional repos for RHEL 7 (ec2)
+  ansible.builtin.command: yum-config-manager --enable rhui-REGION-rhel-server-extras rhui-REGION-rhel-server-optional
+  when:
+    - ansible_distribution == 'RedHat'
+    - ansible_distribution_major_version|int == 7
+
+- name: Install packages - vim & bind-utils
+  ansible.builtin.package:
+    name:
+      - vim
+      - bind-utils
+    state: present
+
+# - name: Create user and add to admin group
+#   ansible.builtin.user:
+#     name: "{{ ec2_name_prefix }}admin"
+#     comment: Sudo user
+#     password: $6$MDZERLPryot60GAz$pcUtETE2UsVZxFL3s0qdKOHLi7nU38cpcNtFsqbGGmp5TW1uz/Z4S/MRECa1qTZgXxjuWy49IbBkjqA/VMtMR0
+#     update_password: on_create
+#     group: adm
+
+# - name: Give user sudo privileges
+#   ansible.builtin.user:
+#     name: "{{ ec2_name_prefix }}admin"
+#     group: wheel

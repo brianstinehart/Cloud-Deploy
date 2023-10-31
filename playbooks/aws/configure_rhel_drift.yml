@@ -1,0 +1,13 @@
+---
+- name: RHEL Configuration
+  hosts: all
+  become: true
+  gather_facts: true
+  tasks:
+  
+    - name: Include default variables
+      ansible.builtin.include_vars: ../../vars/aws.yml
+
+    ## Instance hardening
+    - ansible.builtin.include_role:
+        name: ../../roles/aws_configure_rhel_drift
