@@ -23,7 +23,6 @@
 
 - name: Deploy report server
   when: not ansible_check_mode
-  delegate_to: "{{ report_server }}"
   run_once: true # noqa: run-once[task]
   block:
     - name: Install firewall dependencies
