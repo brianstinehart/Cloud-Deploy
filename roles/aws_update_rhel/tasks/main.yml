@@ -41,9 +41,9 @@
       ansible.builtin.include_role:
         name: "{{ item }}"
       loop:
-        - demo.patching.report_server
-        - demo.patching.report_linux
-        - demo.patching.report_linux_patching
+        - ../../roles/report_server
+        - ../../roles/report_linux
+        - ../../roles/report_linux_patching
 
     - name: Publish landing page
       ansible.builtin.include_role:
