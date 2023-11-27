@@ -1,7 +1,12 @@
 ---
 - name:  Build out Kafka on RHEL 8
   hosts: all
+  
   tasks:
+  
+    - name: Include default variables
+      ansible.builtin.include_vars: ../../vars/aws.yml
 
-  roles:
-    - sleighzy.kafka
+    ## Instance hardening
+    - ansible.builtin.include_role:
+        name: ../../roles/kafka_deploy
