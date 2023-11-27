@@ -1,5 +1,6 @@
 ---
 - name:  Build out Kafka on RHEL 8
+  become: true
   hosts: all
   
   tasks:
