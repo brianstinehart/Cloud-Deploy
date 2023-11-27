@@ -1,0 +1,7 @@
+---
+- name:  Build out Kafka on RHEL 8
+  hosts: all
+  tasks:
+
+  roles:
+    - sleighzy.kafka
