@@ -3,7 +3,7 @@ workshop_dns_zone: "rhdemo.io"
 admin_password: ansible
 dns_type: aws
 aws_user: admin
-ec2_name_prefix: wiz-mongoDB
+ec2_name_prefix: wiz-mongodb
 ec2_region: ap-southeast-2
 ec2_wait: true
 # need to circle back and fix this for teardown - sean
