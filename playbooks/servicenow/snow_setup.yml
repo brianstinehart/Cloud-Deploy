@@ -30,7 +30,6 @@
     - name: Print Message
       debug:
         var: snow_app_result.json.client_secret
-      # register: client_secret
 
     - name: Set client secret and ID variables
       set_fact:

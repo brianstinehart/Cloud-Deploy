@@ -1,0 +1,26 @@
+---
+- name: ServiceNow Create Incident
+  hosts: localhost
+  connection: local
+  gather_facts: no
+  
+  tasks:
+
+    - name: Create Incident
+      servicenow.itsm.incident:
+        instance:
+          host: https://dev97360.service-now.com/
+          client_id: f6c29d3889d7f110455e4d17248c857d
+          client_secret: OE8afrob.{
+
+        state: new
+        short_description: Ansible test
+
+    - name: set stats
+      set_stats:
+        data:
+          inc_number: "{{ new_incident.record.number }}"
+
+    - name: Print Message
+      debug:
+        var: new_incident.record.number
