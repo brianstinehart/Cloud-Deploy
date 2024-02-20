@@ -2,7 +2,7 @@
 - name: Update Windows instances in Azure
   hosts: all
   connection: local
-  become: true
+  become: false
   gather_facts: true
   tasks:
   
