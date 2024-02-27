@@ -4,7 +4,7 @@
   become: true
   gather_facts: true
   tasks:
-  
+
     - name: Include default variables
       ansible.builtin.include_vars: ../../vars/aws.yml
 
