@@ -5,10 +5,11 @@
   become: false
   gather_facts: true
   tasks:
-  
+
     - name: Include default variables for provisioning
       ansible.builtin.include_vars: ../../vars/azure.yml
 
     ## Instance creation
-    - ansible.builtin.include_role:
+    - name: Create instance
+      ansible.builtin.include_role:
         name: ../../roles/azure_win_2022_cis
