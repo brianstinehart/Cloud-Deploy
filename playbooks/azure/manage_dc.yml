@@ -5,7 +5,7 @@
   become: false
   gather_facts: false
   tasks:
-  
+ 
     - name: Include default variables for provisioning
       ansible.builtin.include_vars: ../../vars/azure.yml
 
