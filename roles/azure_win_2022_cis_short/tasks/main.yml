@@ -107,9 +107,9 @@
 #   tags:
 #       - section19
 
-# - name: If Warnings found Output count and control IDs affected
-#   ansible.builtin.debug:
-#       msg:
-#           - "You have {{ warn_count }} Warning(s) that require investigation(s). Their IDs are listed below:"
-#           - "{{ warn_control_list }}"
-#   when: warn_count != 0
+- name: If Warnings found Output count and control IDs affected
+  ansible.builtin.debug:
+      msg:
+          - "You have {{ warn_count }} Warning(s) that require investigation(s). Their IDs are listed below:"
+          - "{{ warn_control_list }}"
+  when: warn_count != 0
