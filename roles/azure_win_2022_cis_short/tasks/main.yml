@@ -129,9 +129,10 @@
 
                   The following configuration items are not aligned with the CIS benchmark:
                   
-                  - Ensure Minimum password age is set to 1 or more days
-                  - Ensure Minimum password length is set to 14 or more characters
-                  - Ensure Account lockout threshold is set to 5 or fewer invalid logon attempts
-                  - Ensure Account lockout duration is set to 15 or more minutes
-                  - Ensure Reset account lockout counter after is set to 15 or more minutes"
+                  Ensure Minimum password age is set to 1 or more days
+                  Ensure Minimum password length is set to 14 or more characters
+                  Ensure Account lockout threshold is set to 5 or fewer invalid logon attempts
+                  Ensure Account lockout duration is set to 15 or more minutes
+                  Ensure Reset account lockout counter after is set to 15 or more minutes"
+
   when: sys_id is defined
