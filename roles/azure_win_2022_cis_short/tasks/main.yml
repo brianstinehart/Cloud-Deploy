@@ -133,7 +133,5 @@
                   - Ensure Minimum password length is set to 14 or more characters
                   - Ensure Account lockout threshold is set to 5 or fewer invalid logon attempts
                   - Ensure Account lockout duration is set to 15 or more minutes
-                  - Ensure Reset account lockout counter after is set to 15 or more minutes
-                  
-                  Please click on this URL to approve: {{ snow_instance }}/nav_to.do?uri=change_request.do?sysparm_query=number={{ chg_number }}"
+                  - Ensure Reset account lockout counter after is set to 15 or more minutes"
   when: sys_id is defined
