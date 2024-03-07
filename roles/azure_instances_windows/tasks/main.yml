@@ -127,4 +127,5 @@
       work_notes: "Azure provisioning complete.
 
                   Machine configuration under way."
+  when: sys_id is defined
 
