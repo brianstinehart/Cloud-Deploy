@@ -21,7 +21,7 @@
         priority: "{{ priority }}"
         risk: "{{ risk }}"
         impact: "{{ impact }}"
-        assignment_group: "CAB Approval"
+        # assignment_group: "CAB Approval"
 
         other:
           assigned_to: "{{ assigned_to }}"
