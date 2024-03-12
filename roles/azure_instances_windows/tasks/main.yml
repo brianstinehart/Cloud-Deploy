@@ -111,6 +111,13 @@
 #   delegate_to: "{{ item }}"
 #   with_items: "{{ groups['windows'] }}" 
 
+################### Update WinRM Settings ###################
+
+- name: Copy WinRM setup script
+  ansible.windows.win_copy:
+    src: files/ConfigureRemotingForAnsible.ps1
+    dest: C:\Temp\
+
 ################### Update ServiceNow ###################
 
 - name: Update ServiceNow ticket to indicate instance creation
