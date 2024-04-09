@@ -14,7 +14,7 @@
           password: "{{ snow_password }}"
         number: "{{ chg_number }}"
       until: change_request_status.records[0].state == "implement"
-      retries: 100
+      retries: 300
       delay: 10
       register: change_request_status
 
