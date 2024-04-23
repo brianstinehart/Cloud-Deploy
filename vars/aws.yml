@@ -26,7 +26,7 @@ hub_type: "private_automation_hub"
 rtr1_type: "cisco"
 rtr2_type: "arista"
 rtr3_type: "juniper"
-rtr4_type: "arista"
+rtr4_type: "cisco"
 rhel: "rhel7"
 network_type: multivendor
 valid_network_types:
