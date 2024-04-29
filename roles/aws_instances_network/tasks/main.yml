@@ -70,7 +70,7 @@
 - name: Create EC2 instances for rtr2 node in VPC-2 (workshop_type network)
   amazon.aws.ec2_instance:
     key_name: "{{ ec2_name_prefix }}-key"
-    security_group: "{{ ec2_security_group2 }}"
+    security_group: "{{ ec2_security_group }}"
     instance_type: "{{ ec2_info[rtr2_type].size }}"
     image_id: "{{ lookup('vars', rtr2_type ~ '_ami')['image_id'] }}"
     region: "{{ ec2_region }}"
@@ -100,7 +100,7 @@
       security_group: core
       ansible-workshops: "true"
     wait: "{{ ec2_wait }}"
-    vpc_subnet_id: "{{ ec2_vpc_subnet_id2 }}"
+    vpc_subnet_id: "{{ ec2_vpc_subnet_id }}"
     volumes: "{{ ec2_info[rtr2_type].volume | default(omit) }}"
 
 - name: grab instance ids to tag rtr2
