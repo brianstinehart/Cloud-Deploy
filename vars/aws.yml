@@ -24,7 +24,7 @@ create_cluster: false
 control_type: "rhel9-controller"
 hub_type: "private_automation_hub"
 rtr1_type: "cisco"
-rtr2_type: "arista"
+rtr2_type: "juniper"
 rtr3_type: "juniper"
 rtr4_type: "cisco"
 rhel: "rhel7"
