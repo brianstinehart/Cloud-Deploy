@@ -1,0 +1,35 @@
+---
+- name: Basic System Setup
+  hosts: all
+  become: true
+  
+  tasks:
+
+    - name: Update all security-related packages
+      ansible.builtin.dnf:
+        name: '*'
+        state: latest
+        security: true
+   
+    - name: Create a new user
+      ansible.builtin.user:
+        name: myuser
+        state: present
+        create_home: true
+
+    - name: Ensure user is present
+      block:
+        - name: Check user existence
+          ansible.builtin.command:
+            cmd: id myuser
+          register: user_check
+    
+        - name: Report on present user account
+          ansible.builtin.debug:
+            msg: "User 'myuser' exists."
+          when: user_check.rc == 0
+
+        - name: Report on absent user account
+          ansible.builtin.debug:
+            msg: "User 'myuser' does not exists."
+          when: user_check.rc != 0        
