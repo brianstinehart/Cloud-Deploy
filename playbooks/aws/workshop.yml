@@ -2,7 +2,7 @@
 - name: Basic System Setup
   hosts: all
   become: true
-  
+
   tasks:
 
     - name: Update all security-related packages
@@ -10,7 +10,7 @@
         name: '*'
         state: latest
         security: true
-   
+
     - name: Create a new user
       ansible.builtin.user:
         name: myuser
@@ -23,7 +23,7 @@
           ansible.builtin.command:
             cmd: id myuser
           register: user_check
-    
+
         - name: Report on present user account
           ansible.builtin.debug:
             msg: "User 'myuser' exists."
@@ -32,4 +32,4 @@
         - name: Report on absent user account
           ansible.builtin.debug:
             msg: "User 'myuser' does not exists."
-          when: user_check.rc != 0        
+          when: user_check.rc != 0
