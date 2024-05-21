@@ -2,4 +2,5 @@
 - name: Windows Update
   ansible.windows.win_updates:
     reboot: true
-    category_names: '*'
+    category_names:
+      - CriticalUpdates
