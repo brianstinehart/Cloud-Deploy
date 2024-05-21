@@ -6,7 +6,7 @@
   gather_facts: false
   tasks:
   
-    - name: Include default variables for provisioning
+    - name: Include default variables for patching
       ansible.builtin.include_vars: ../../vars/azure.yml
 
     ## Instance creation

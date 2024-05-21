@@ -22,7 +22,7 @@
     group: root
     mode: '0644'
 
-- name: set custom DNS server
+- name: set custom DNS server for DHCP
   ansible.builtin.blockinfile:
     dest: /etc/dhcp/dhclient.conf
     block: |
