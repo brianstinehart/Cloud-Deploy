@@ -5,11 +5,19 @@
 
   tasks:
 
-    - name: Update all security-related packages
+    ### Update all DNF security packages
+    # Consider using the DNF module (https://docs.ansible.com/ansible/latest/collections/ansible/builtin/dnf_module.html)
+    # Should this be its own role?
+
+    - name: Update all security-related DNF packages
       ansible.builtin.dnf:
         name: '*'
         state: latest
         security: true
+
+    ### Create a new user & make admin group the primary group for new user, add user to wheel group, check that user is present and debug/print to output
+    # Consider using the user module (https://docs.ansible.com/ansible/latest/collections/ansible/builtin/user_module.html)
+    # Which tasks could be included in a role?
 
     - name: Create a new user
       ansible.builtin.user:
@@ -41,7 +49,11 @@
             msg: "User 'myuser' does not exists."
           when: user_check.rc != 0
 
-    - name: Ensure user is present
+    ### Install packages in a single task: NetworkManager, Chrony, Sysstat, Apache, bind-utils and Vim
+    # Consider the package module (https://docs.ansible.com/ansible/latest/collections/ansible/builtin/package_module.html)
+    # and using a loop (https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_loops.html)
+
+    - name: Ensure packages are present
       ansible.builtin.package:
         name: "{{ item }}"
         state: present
@@ -53,10 +65,20 @@
         - vim
         - bind-utils
 
-    - name: Start Apache service
+    ### Enable and start the Apache service and copy index.html to correct directory
+    # Consider the service module (https://docs.ansible.com/ansible/latest/collections/ansible/builtin/service_module.html)
+
+    - name: Enable and start Apache service
       ansible.builtin.service:
         name: httpd
+        enabled: true
         state: started
+
+    - name: Copy index.html
+      ansible.builtin.copy:
+        src: index.html
+        dest: /var/www/html/index.html
+        mode: '644'
 
     - name: Create dhclient.conf file
       ansible.builtin.file:
