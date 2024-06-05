@@ -21,19 +21,23 @@
         state: directory
 
     ## build network elements, security groups and key pair
-    - ansible.builtin.include_role:
+    - name: Build network elements, security groups and key pair
+      ansible.builtin.include_role:
         name: ../../roles/aws_resources
-    
+
     ## Duplicates the above for network using 2 VPCs
-    - ansible.builtin.include_role:
+    - name: Duplicates the above for network using 2 VPCs
+      ansible.builtin.include_role:
         name: ../../roles/aws_resources_network
 
     ## find AMI dynamically
-    - ansible.builtin.include_role:
+    - name: Find AMI dynamically
+      ansible.builtin.include_role:
         name: ../../roles/ami_find_{{ workshop_type }}
 
     ## Instance creation
-    - ansible.builtin.include_role:
+    - name: Network instance creation
+      ansible.builtin.include_role:
         name: ../../roles/aws_instances_{{ workshop_type }}
 
     ## Configure network device setup
