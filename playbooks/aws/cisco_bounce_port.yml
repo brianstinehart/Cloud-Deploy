@@ -1,9 +1,9 @@
 ---
-- name: Bounce port 
+- name: Bounce port
   hosts: all
   gather_facts: false
   tasks:
-  
+
     # - name: For idempotency, use full-form commands
     #   cisco.ios.ios_config:
     #     lines:
@@ -14,7 +14,7 @@
     #   ansible.builtin.wait_for:
     #     timeout: 20
     #   delegate_to: localhost
-    
+
     - name: Bounce port
       cisco.ios.ios_config:
         lines:
