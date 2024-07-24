@@ -27,7 +27,7 @@ rtr1_type: "cisco"
 rtr2_type: "juniper"
 rtr3_type: "juniper"
 rtr4_type: "cisco"
-rhel: "rhel8"
+rhel: "rhel9"
 network_type: multivendor
 valid_network_types:
   - cisco
