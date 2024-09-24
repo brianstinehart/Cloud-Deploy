@@ -32,9 +32,9 @@
         msg:
         - "This is your export UUID: {{ export_uuid }}"
 
-    - name: Sleep for 30 seconds and continue
+    - name: Sleep for 10 seconds and continue
       ansible.builtin.wait_for:
-        timeout: 30
+        timeout: 10
 
     - name: Export vulnerabilities status
       ansible.builtin.uri:
