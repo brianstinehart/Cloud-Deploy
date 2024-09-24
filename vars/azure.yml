@@ -62,7 +62,7 @@ azure_admin_pass: "ansible123!"
 # azure_subscription_id: 'c12a14d4-eb57-4d79-8322-b0e933053cd6'
 # azure_tenant: '41101d19-61a7-4971-a3ce-6a1a5f5dd8e8'
 azure_location: 'australiasoutheast'
-azure_resource_group: 'openenv-z7d6p'
+azure_resource_group: 'openenv-kpz7g'
 
 azure_storage_account_type: Standard_LRS
 
