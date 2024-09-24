@@ -11,4 +11,4 @@
 
     ## Instance creation
     - ansible.builtin.include_role:
-        name: ../../roles/azure_nessus_resolve_cve_2013_3900
+        name: ../../roles/azure_nessus_resolve
