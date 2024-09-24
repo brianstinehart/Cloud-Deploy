@@ -21,7 +21,7 @@
 
     - name: Print Message
       ansible.builtin.debug:
-        var: vuln_export.export_uuid
+        var: msg.json.export_uuid
 
     # - name: Set client secret and ID variables
     #   ansible.builtin.set_fact:
@@ -43,4 +43,3 @@
     #       accept: application/json
     #       content-type: application/json
     #   register: vuln_export
-    
