@@ -10,5 +10,8 @@
       ansible.builtin.include_vars: ../../vars/azure.yml
 
     ## Instance creation
-    - ansible.builtin.include_role:
-        name: ../../roles/azure_nessus_resolve
+    - name: Resolve vulnerability with Registry update
+      ansible.windows.win_regedit:
+        path: HKLM:\Software\Microsoft\Cryptography\Wintrust\Config\EnableCertPaddingCheck
+        data: 1
+        state: present
