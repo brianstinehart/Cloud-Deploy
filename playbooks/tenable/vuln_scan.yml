@@ -16,21 +16,21 @@
       register: vuln_export
 
     - name: Print Message
-      debug:
+      ansible.builtin.debug:
         msg: "{{ vuln_export }}"
 
     - name: Print Message
-      debug:
+      ansible.builtin.debug:
         var: vuln_export.export_uuid
 
     # - name: Set client secret and ID variables
-    #   set_fact:
+    #   ansible.builtin.set_fact:
     #     client_secret: "{{ snow_app_result.json.client_secret }}"
     #     client_id: "{{ snow_app_result.json.client_id }}"
 
     # - name: Print Message
-    #   debug:
-    #     msg: 
+    #   ansible.builtin.debug:
+    #     msg:
     #     - "This is your client secret: {{ client_secret }}"
     #     - "This is your client ID: {{ client_id }}"
 
@@ -43,3 +43,4 @@
     #       accept: application/json
     #       content-type: application/json
     #   register: vuln_export
+    
