@@ -21,7 +21,7 @@
 
     - name: Print Message
       ansible.builtin.debug:
-        var: json.export_uuid
+        var: vuln_export.json.export_uuid
 
     # - name: Set client secret and ID variables
     #   ansible.builtin.set_fact:
