@@ -109,7 +109,7 @@
 # - name: Windows | Wait for {{ windows_ansible_connection | default('winrm') }} to come up
 #   ansible.builtin.wait_for_connection:
 #   delegate_to: "{{ item }}"
-#   with_items: "{{ groups['windows'] }}" 
+#   with_items: "{{ groups['windows'] }}"
 
 ################### Update WinRM Settings ###################
 

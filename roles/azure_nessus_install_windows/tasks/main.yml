@@ -1,0 +1,10 @@
+---
+- name: Run basic PowerShell script
+  ansible.windows.win_powershell:
+    script: |
+      Invoke-WebRequest -Uri "https://sensor.cloud.tenable.com/install/scanner/installer/ms-install-script.ps1" -OutFile "./ms-install-script.ps1"; & "./ms-install-script.ps1" -key "36c326b94e4dd526979d3b2b9d2a306bcc179e59c128ea3f2fe3892cc8d9fc9e" -type "scanner" -name "rhagent-s1" -groups 'rhwindows'; Remove-Item -Path "./ms-install-script.ps1"
+
+- name: Update ServiceNow Ticket Work Notes 
+  ansible.builtin.set_stats:
+    data:
+      snow_note: "Tenable Nessus agent successfully installed"
