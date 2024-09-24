@@ -113,10 +113,10 @@
 
 ################### Update WinRM Settings ###################
 
-- name: Copy WinRM setup script
-  ansible.windows.win_copy:
-    src: files/ConfigureRemotingForAnsible.ps1
-    dest: C:\Temp\
+# - name: Copy WinRM setup script
+#   ansible.windows.win_copy:
+#     src: files/ConfigureRemotingForAnsible.ps1
+#     dest: C:\Temp\
 
 ################### Update ServiceNow ###################
 
@@ -135,4 +135,3 @@
 
                   Machine configuration under way."
   when: sys_id is defined
-
