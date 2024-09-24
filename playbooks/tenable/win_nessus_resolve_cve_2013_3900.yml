@@ -1,5 +1,5 @@
 ---
-- name: Install Nessus Agent on Windows Hosts
+- name: Resolve CVE on Windows Hosts
   hosts: all
   connection: local
   become: false
