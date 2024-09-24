@@ -1,0 +1,6 @@
+---
+- name: Resolve vulnerability with Registry update
+  ansible.windows.win_regedit:
+    path: HKLM:\Software\Microsoft\Cryptography\Wintrust\Config\EnableCertPaddingCheck
+    data: 1
+    state: present
