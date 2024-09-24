@@ -32,6 +32,10 @@
         msg:
         - "This is your export UUID: {{ export_uuid }}"
 
+    - name: Sleep for 30 seconds and continue
+      ansible.builtin.wait_for:
+        timeout: 30
+
     - name: Export vulnerabilities status
       ansible.builtin.uri:
         url: "https://cloud.tenable.com/vulns/export/{{ export_uuid }}/status"
@@ -53,7 +57,7 @@
       ansible.builtin.set_fact:
         chunk_id: "{{ vuln_status.json.chunks_available }}"
 
-    - name: Download vulnerabilitie chunk
+    - name: Download vulnerabilities chunk
       ansible.builtin.uri:
         url: "https://cloud.tenable.com/vulns/export/{{ export_uuid }}/chunks/chunk_id"
         method: GET
