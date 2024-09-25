@@ -29,7 +29,7 @@
 
         state: closed
         # requested_by: some.user
-        close_code: "Closed/Resolved by Caller"
+        close_code: "Resolved by Caller"
         close_notes: "{{ close_notes }}"
         # assignment_group: "Software"
         number: "{{ inc_number }}"
