@@ -14,4 +14,4 @@
       community.general.slack:
         token: "T0508SWKB2N/B04V8C4P6A3/fr3b7rtyxJrZgjuRqQ1UCT1d"
         channel: "#devops"
-        msg: "Here is the URL for reference: https://aap-controller-aap.apps.cluster-44q6t.44q6t.sandbox279.opentlc.com/#/jobs/playbook/{{ awx_job_id }}/output"
+        msg: "Here is the URL for reference: https://aap-controller-aap.apps.cluster-6fk65.6fk65.sandbox667.opentlc.com/#/jobs/playbook/{{ awx_job_id }}/output"
