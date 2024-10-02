@@ -5,7 +5,7 @@
   
   tasks:
     - name: Login to OpenShift cluster
-      ansible.builtin.command: oc login -u=admin -p=ctsVovdKGYaIAWAo --server=https://api.cluster-44q6t.44q6t.sandbox279.opentlc.com:6443
+      ansible.builtin.command: "oc login -u={{ ocp_username }} -p={{ ocp_password }} --server={{ ocp_api_url }}"
 
     - name: Change file ownership, group and permissions
       ansible.builtin.file:
