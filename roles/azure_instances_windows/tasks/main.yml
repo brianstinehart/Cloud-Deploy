@@ -3,18 +3,18 @@
   ansible.builtin.set_fact:
     azure_storage_account: "{{ (name_prefix + 'storage') | lower | regex_replace('[^0-9a-z]+', '') }}"
     azure_virtual_network: "{{ name_prefix }}-network"
-    azure_virtual_subnet:  "{{ (name_prefix + 'subnet')  | lower | regex_replace('[^0-9a-z]+', '') }}"
+    azure_virtual_subnet: "{{ (name_prefix + 'subnet')  | lower | regex_replace('[^0-9a-z]+', '') }}"
 
 # Create a virtual network
 - name: Azure | Create virtual network
   azure.azcollection.azure_rm_virtualnetwork:
-    resource_group: "{{ azure_resource_group }}"  
+    resource_group: "{{ azure_resource_group }}"
     name: "{{ azure_virtual_network }}"
     address_prefixes_cidr:
-        - "{{ ptr_zone_cidr }}"
+      - "{{ ptr_zone_cidr }}"
     dns_servers:
-        - "8.8.8.8"
-  register: virtual_network_facts    
+      - "8.8.8.8"
+  register: virtual_network_facts
 
 # Create a subnet and associate with the virtual network
 - name: Create a subnet
@@ -32,7 +32,7 @@
     managed_disk_type: "{{ azure_storage_account_type }}"
     admin_username: "{{ azure_admin_user }}"
     admin_password: "{{ azure_admin_pass }}"
-    started: True
+    started: true
     os_type: Windows
     state: present
     public_ip_allocation_method: Dynamic
@@ -42,7 +42,7 @@
       - 22    # SSH
       - 80
       - 8080
-      - 443 
+      - 443
       - 5986  # WinRM secure
       - 5985  # WinRM
       - 3389  # RDP
@@ -67,12 +67,12 @@
   register: windows_instances
   until: windows_instances.finished
   retries: 300
-  with_items: 
+  with_items:
     - "{{ windows1_jobs.results }}"
 
 - name: Windows create VM Extension
   azure.azcollection.azure_rm_virtualmachineextension:
-    resource_group: "{{ azure_resource_group }}"    
+    resource_group: "{{ azure_resource_group }}"
     name: custom-script
     virtual_machine_name: "{{ item.invocation.module_args.name }}"
     publisher: Microsoft.Compute
@@ -102,7 +102,7 @@
     ansible_winrm_read_timeout_sec: 150
     student: "{{ item.invocation.module_args.tags.Student | regex_replace('[^0-9]', '') }}"
     groups: windows
-  with_items: "{{ windows_instances.results }}"  
+  with_items: "{{ windows_instances.results }}"
 
 ################### Wait for Instances ###################
 
