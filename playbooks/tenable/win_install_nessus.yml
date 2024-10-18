@@ -9,6 +9,7 @@
     - name: Include default variables for Azure
       ansible.builtin.include_vars: ../../vars/azure.yml
 
-    ## Instance creation
-    - ansible.builtin.include_role:
+    ## Nessus agent install
+    - name: Include Nessus agent install role
+      ansible.builtin.include_role:
         name: ../../roles/azure_nessus_install_windows

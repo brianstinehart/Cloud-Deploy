@@ -10,7 +10,7 @@
         url: "https://cloud.tenable.com/vulns/export"
         method: POST
         headers:
-          X-ApiKeys: accessKey=fa095c9ed880dbc2ce2ec7fb28057ca80c4fe559868d8fd0cfd21777fae64015;secretKey=172e2fa3b3fe8a6efcb325ea415ef0904901b42d08eb0344dbfebfc0e92ca28e
+          X-ApiKeys: "accessKey={{ access_key }};secretKey={{ secret_key }}"
           accept: application/json
           content-type: application/json
       register: vuln_export
@@ -30,7 +30,7 @@
     - name: Print Message
       ansible.builtin.debug:
         msg:
-        - "This is your export UUID: {{ export_uuid }}"
+          - "This is your export UUID: {{ export_uuid }}"
 
     - name: Sleep for 10 seconds and continue
       ansible.builtin.wait_for:
