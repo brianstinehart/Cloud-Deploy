@@ -62,7 +62,7 @@
         url: "https://cloud.tenable.com/vulns/export/{{ export_uuid }}/chunks/1"
         method: GET
         headers:
-          X-ApiKeys: accessKey=fa095c9ed880dbc2ce2ec7fb28057ca80c4fe559868d8fd0cfd21777fae64015;secretKey=172e2fa3b3fe8a6efcb325ea415ef0904901b42d08eb0344dbfebfc0e92ca28e
+          X-ApiKeys: "accessKey={{ access_key }};secretKey={{ secret_key }}"
           accept: application/octet-stream
       register: vuln_chunk
 
